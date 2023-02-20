@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moviemanagement.sceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moviemanagement.loginViewController">
    <children>
       <ImageView fx:id="myImageView" fitHeight="484.0" fitWidth="709.0" layoutX="-4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -48,7 +48,7 @@
             <Bloom threshold="0.26" />
          </effect>
       </Label>
-      <Button fx:id="myRegister" blendMode="EXCLUSION" depthTest="DISABLE" layoutX="214.0" layoutY="315.0" mnemonicParsing="false" onAction="#switchToRegister" prefHeight="31.0" prefWidth="105.0" text="Register">
+      <Button fx:id="trueRegister" blendMode="EXCLUSION" depthTest="DISABLE" layoutX="214.0" layoutY="315.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="105.0" text="Register">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
