@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moviemanagement.loginViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moviemanagement.registerController">
    <children>
       <ImageView fx:id="myImageView" fitHeight="484.0" fitWidth="709.0" layoutX="-4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -40,7 +40,7 @@
             <Bloom />
          </effect>
       </Label>
-      <Label layoutX="8.0" layoutY="-22.0" prefHeight="136.0" prefWidth="709.0" text="                         Register" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="8.0" layoutY="-22.0" prefHeight="136.0" prefWidth="728.0" text="Register" textAlignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>

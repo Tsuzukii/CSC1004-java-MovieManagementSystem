@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -23,9 +23,9 @@
             <GaussianBlur radius="8.0" />
          </effect>
       </ImageView>
-      <TextField fx:id="usernameField" layoutX="342.0" layoutY="162.0" prefHeight="23.0" prefWidth="153.0" />
-      <PasswordField fx:id="passwordField" layoutX="342.0" layoutY="218.0" prefHeight="23.0" prefWidth="153.0" />
-      <Label layoutX="221.0" layoutY="158.0" prefHeight="31.0" prefWidth="112.0" text="Username：" textAlignment="CENTER" textFill="WHITE">
+      <TextField fx:id="usernameField" layoutX="302.0" layoutY="162.0" prefHeight="23.0" prefWidth="153.0" />
+      <PasswordField fx:id="passwordField" layoutX="300.0" layoutY="216.0" prefHeight="23.0" prefWidth="153.0" />
+      <Label layoutX="187.0" layoutY="160.0" prefHeight="31.0" prefWidth="112.0" text="Username：" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Arial Bold Italic" size="17.0" />
          </font>
@@ -33,7 +33,7 @@
             <Blend />
          </effect>
       </Label>
-      <Label layoutX="224.0" layoutY="214.0" prefHeight="31.0" prefWidth="105.0" text="Password：" textFill="WHITE">
+      <Label layoutX="190.0" layoutY="214.0" prefHeight="31.0" prefWidth="105.0" text="Password：" textFill="WHITE">
          <font>
             <Font name="Arial Bold Italic" size="17.0" />
          </font>
@@ -41,7 +41,7 @@
             <Bloom />
          </effect>
       </Label>
-      <Label layoutX="27.0" layoutY="14.0" prefHeight="136.0" prefWidth="709.0" text="                Movie Magament System" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="-3.0" layoutY="13.0" prefHeight="136.0" prefWidth="709.0" text="Movie Magament System" textAlignment="CENTER">
          <font>
             <Font size="30.0" />
          </font>
@@ -49,20 +49,20 @@
             <Bloom threshold="0.26" />
          </effect>
       </Label>
-      <Button fx:id="myRegister" blendMode="EXCLUSION" depthTest="DISABLE" layoutX="228.0" layoutY="286.0" mnemonicParsing="false" onAction="#switchToRegister" prefHeight="24.0" prefWidth="97.0" text="Register">
+      <Button fx:id="myRegister" blendMode="EXCLUSION" depthTest="DISABLE" layoutX="190.0" layoutY="285.0" mnemonicParsing="false" onAction="#switchToRegister" prefHeight="24.0" prefWidth="97.0" text="Register">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="myLogin" blendMode="EXCLUSION" layoutX="403.0" layoutY="286.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="97.0" text="Log in">
+      <Button fx:id="myLogin" blendMode="EXCLUSION" layoutX="390.0" layoutY="285.0" mnemonicParsing="false" onAction="#tryLogin" prefHeight="24.0" prefWidth="97.0" text="Log in">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <CheckBox fx:id="myCheckBox" layoutX="530.0" layoutY="182.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="121.0" text="Admin User" textFill="WHITE">
+      <JFXCheckBox fx:id="adminCheckbox" layoutX="517.0" layoutY="182.0" prefHeight="52.0" prefWidth="134.0" text="Admin User" textFill="WHITE">
          <font>
-            <Font name="System Bold Italic" size="14.0" />
+            <Font size="23.0" />
          </font>
-      </CheckBox>
+      </JFXCheckBox>
    </children>
 </AnchorPane>
