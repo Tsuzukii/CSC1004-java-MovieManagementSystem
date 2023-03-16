@@ -13,6 +13,7 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 
 public class Main extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
@@ -24,7 +25,5 @@ public class Main extends Application {
 
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
 }

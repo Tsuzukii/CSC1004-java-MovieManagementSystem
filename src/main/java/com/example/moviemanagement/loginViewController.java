@@ -15,6 +15,7 @@ import com.jfoenix.controls.JFXCheckBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.EventObject;
 import java.util.List;
 
 public class loginViewController {
@@ -54,7 +55,8 @@ public class loginViewController {
     @FXML
     private TextField telNumberRegister;
 
-
+    @FXML
+    private Main mainApp;
 
 
     private Stage stage;
@@ -62,7 +64,9 @@ public class loginViewController {
     private Parent root;
 
     public loginViewController() throws SQLException {
+
     }
+
 
     //switch scenes from login page to register scene when clicking the "register" button
     public void switchToRegister(ActionEvent register) throws IOException{
@@ -75,9 +79,18 @@ public class loginViewController {
     }
 
 
-    //connect mysql driver
+    public void switchTo(String sce) throws IOException{
+        root = FXMLLoader.load(getClass().getResource(sce));
+        stage = (Stage)(scene.getWindow());
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        System.out.println("Switching to Register");
+    }
+
 
     public void tryLogin() throws Exception {
+        scene = usernameField.getScene();
         try {
             JdbcUtils tmp = new JdbcUtils();
             tmp.databaseDriverConnection();
@@ -110,14 +123,67 @@ public class loginViewController {
             if (counter == 0) {
                 System.out.println("Either password or username is incorrect.");
             } else {
-                System.out.println("It worked!!!!! ");
+                switchTo("adminUserView.fxml");
             }
 
         }
         else{
-            System.out.println("aa");
+            String sql = "select * from `user` where username = ? and password = ?";
+            List<Object> myQuestion = new ArrayList<>();
+            myQuestion.add(inputUsn);
+            myQuestion.add(inputPwd);
+            myPrepared = myConnectionLogin.prepareStatement(sql);
+            myPrepared.setObject(1, myQuestion.get(0));
+            myPrepared.setObject(2, myQuestion.get(1));
+            resultSet = myPrepared.executeQuery();
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int counter = 0;
+            int col = metaData.getColumnCount();
+            while (resultSet.next()) {
+                counter++;
+                System.out.println("ID: " + resultSet.getInt("id"));
+            }
+            if (counter == 0) {
+                System.out.println("Either password or username is incorrect.");
+            } else {
+                switchTo("commonUserView.fxml");
+            }
+
         }
 
+    }
+    public void setMyRegister() {
+        try {
+            JdbcUtils tmp = new JdbcUtils();
+            tmp.databaseDriverConnection();
+        } catch (ClassNotFoundException e) {
+            System.out.println("ClassNotFoundException");
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            System.out.println("SQLException");
+            throw new RuntimeException(e);
+        }
+
+        int maxlength = 60;
+        String errorinfo = null;
+        if (usernameFieldRegister.getLength() > maxlength){
+            errorinfo = "username too long";
+        }
+        else if (passwordFieldRegister.getLength() > maxlength) {
+            errorinfo = "password too long";
+        }
+        else if (realNameRegister.getLength() > maxlength) {
+            errorinfo = "real name too long";
+        }
+        else if(telNumberRegister.getLength() > maxlength) {
+            errorinfo = "tel number too long";
+        }
+
+        switch (errorinfo)
+        {
+            case "null" :
+
+        }
     }
 
 }
