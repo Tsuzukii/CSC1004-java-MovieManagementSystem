@@ -53,20 +53,13 @@ public class loginViewController {
     private TextField realNameRegister;
 
     @FXML
-    private TextField telNumberRegister;
+    private TextField ageRegister;
 
-    @FXML
-    private Main mainApp;
 
 
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    public loginViewController() throws SQLException {
-
-    }
-
 
     //switch scenes from login page to register scene when clicking the "register" button
     public void switchToRegister(ActionEvent register) throws IOException{
@@ -77,6 +70,19 @@ public class loginViewController {
         stage.show();
         System.out.println("Switching to Register");
     }
+
+    public void switchToLogin(ActionEvent register) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
+        stage = (Stage)((Node)register.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        System.out.println("Switching to Login");
+    }
+
+    public loginViewController() throws SQLException {
+    }
+
 
 
     public void switchTo(String sce) throws IOException{
@@ -90,7 +96,6 @@ public class loginViewController {
 
 
     public void tryLogin() throws Exception {
-        scene = usernameField.getScene();
         try {
             JdbcUtils tmp = new JdbcUtils();
             tmp.databaseDriverConnection();
@@ -102,6 +107,8 @@ public class loginViewController {
             System.out.println("SQLException");
             throw new RuntimeException(e);
         }
+
+        scene = usernameField.getScene();
         String inputUsn = usernameField.getText();
         String inputPwd = passwordField.getText();
         if (adminCheckbox.isSelected()) {
@@ -121,9 +128,11 @@ public class loginViewController {
                 System.out.println("ID: " + resultSet.getInt("id"));
             }
             if (counter == 0) {
+                //error page and return to former login page
                 System.out.println("Either password or username is incorrect.");
             } else {
                 switchTo("adminUserView.fxml");
+                stage.setTitle("MovieManagementSystem_admin");
             }
 
         }
@@ -146,13 +155,14 @@ public class loginViewController {
             if (counter == 0) {
                 System.out.println("Either password or username is incorrect.");
             } else {
-                switchTo("commonUserView.fxml");
+                switchTo("newCommonUser.fxml");
+                stage.setTitle("MovieManagementSystem_user");
             }
 
         }
 
     }
-    public void setMyRegister() {
+    public void setMyRegister() throws SQLException {
         try {
             JdbcUtils tmp = new JdbcUtils();
             tmp.databaseDriverConnection();
@@ -175,15 +185,41 @@ public class loginViewController {
         else if (realNameRegister.getLength() > maxlength) {
             errorinfo = "real name too long";
         }
-        else if(telNumberRegister.getLength() > maxlength) {
+        else if(ageRegister.getLength() > maxlength) {
             errorinfo = "tel number too long";
         }
+        //查重
 
         switch (errorinfo)
         {
             case "null" :
+                //查重判断还没写 写在inputUtils
+                JdbcUtils tmp = new JdbcUtils();
+                List<Object> registerInfo = new ArrayList<>();
+                registerInfo.add(usernameFieldRegister.getText());
+                registerInfo.add(passwordFieldRegister.getText());
+                registerInfo.add(realNameRegister.getText());
+                registerInfo.add(ageRegister.getText());
+                //scene = usernameFieldRegister.getScene();
+                String sql = "insert into `user`(username, password, realName, age) " +
+                        "values(?, ?, ?, ?)";
+                String returnTest = "null";
+                tmp.updateDBWithStatement(sql, registerInfo, returnTest);
+                if (returnTest.equals("success")){
+                    System.out.println("register success");
+            }
 
+
+            case "username too long":
+
+            case "password too long":
+
+            case "real name too long":
+
+            case "tel number too long":
         }
+
+
     }
 
 }
