@@ -35,6 +35,7 @@ public class movieCommentController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
         System.out.println("Switching to Login");
     }
 }

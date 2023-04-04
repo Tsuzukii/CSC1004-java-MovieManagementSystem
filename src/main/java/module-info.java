@@ -4,7 +4,7 @@ module com.example.moviemanagement {
     requires java.sql;
     requires com.jfoenix;
     requires mysql.connector.j;
-    //requires rxcontrols;
+    requires rxcontrols;
 
 
     opens com.example.moviemanagement to javafx.fxml;

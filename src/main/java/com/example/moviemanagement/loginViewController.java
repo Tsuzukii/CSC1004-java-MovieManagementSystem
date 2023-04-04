@@ -72,6 +72,7 @@ public class loginViewController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
         System.out.println("Switching to Register");
     }
 
@@ -111,9 +112,11 @@ public class loginViewController {
             if (counter == 0) {
                 //error page and return to former login page
                 switchTo("loginError.fxml");
+                stage.centerOnScreen();
                 System.out.println("Either password or username is incorrect.");
             } else {
                 switchTo("adminUserView.fxml");
+                stage.centerOnScreen();
                 stage.setTitle("MovieManagementSystem_admin");
             }
 
