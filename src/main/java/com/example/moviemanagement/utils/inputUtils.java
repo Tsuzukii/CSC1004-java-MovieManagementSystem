@@ -36,7 +36,7 @@ public class inputUtils {
         System.out.println("Switching to Register");
     }
 
-    public void registerationRepititionCheck(String username, String pwd, String realname, String age, String errorinfo) throws SQLException, IOException {
+    public void registerationRepititionCheck(String username, String pwd, String address, String age, String gender, String errorinfo) throws SQLException, IOException {
         try {
             JdbcUtils tmp = new JdbcUtils();
             tmp.databaseDriverConnection();
@@ -48,17 +48,19 @@ public class inputUtils {
             System.out.println("SQLException");
             throw new RuntimeException(e);
         }
-        String sql = "select * from `user` where username = ? and password = ? and realName = ? and age = ?";
+        String sql = "select * from `user` where username = ? and password = ? and address = ? and age = ? and gender = ?";
         List<Object> registerInfo = new ArrayList<>();
         registerInfo.add(username);
         registerInfo.add(pwd);
-        registerInfo.add(realname);
+        registerInfo.add(address);
         registerInfo.add(age);
+        registerInfo.add(gender);
         myPrepared = myConnectionLogin.prepareStatement(sql);
         myPrepared.setObject(1, registerInfo.get(0));
         myPrepared.setObject(2, registerInfo.get(1));
         myPrepared.setObject(3, registerInfo.get(2));
         myPrepared.setObject(4, registerInfo.get(3));
+        myPrepared.setObject(5, registerInfo.get(4));
         resultSet = myPrepared.executeQuery();
         ResultSetMetaData metaData = resultSet.getMetaData();
         int counter = 0;

@@ -5,20 +5,24 @@ import com.example.moviemanagement.utils.inputUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-public class registerController {
+import java.util.ResourceBundle;
+//选择
+public class registerController implements Initializable {
     @FXML
     private Button trueRegister;
 
@@ -37,9 +41,14 @@ public class registerController {
     @FXML
     private Button myBack;
 
+    @FXML
+    private ChoiceBox<String> genderChoiceBox;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    private String[] gender = {"Male", "Female"};
 
     public void switchTo(String sce) throws IOException{
         root = FXMLLoader.load(getClass().getResource(sce));
@@ -81,7 +90,7 @@ public class registerController {
         inputUtils myInput = new inputUtils();
         int maxlength = 60;
         String errorinfo = "null";
-        myInput.registerationRepititionCheck(usernameFieldRegister.getText(), passwordFieldRegister.getText(), addressRegister.getText(), ageRegister.getText(), errorinfo);
+        myInput.registerationRepititionCheck(usernameFieldRegister.getText(), passwordFieldRegister.getText(), addressRegister.getText(), ageRegister.getText(), genderChoiceBox.getValue().toString(), errorinfo);
         if (usernameFieldRegister.getLength() > maxlength){
             errorinfo = "username too long";
         }
@@ -94,7 +103,7 @@ public class registerController {
         else if(ageRegister.getLength() > maxlength) {
             errorinfo = "tel number too long";
         }
-        else if(usernameFieldRegister.getText().equals(null)||passwordFieldRegister.getText().equals("")||addressRegister.getText().equals("")||ageRegister.getText().equals("")){
+        else if(usernameFieldRegister.getText().equals(null)||passwordFieldRegister.getText().equals("")||addressRegister.getText().equals("")||ageRegister.getText().equals("")||genderChoiceBox.getValue().equals("")){
             errorinfo = "input information is null";
         }
         //查重
@@ -107,9 +116,10 @@ public class registerController {
                 registerInfo.add(passwordFieldRegister.getText());
                 registerInfo.add(addressRegister.getText());
                 registerInfo.add(ageRegister.getText());
+                registerInfo.add(genderChoiceBox.getValue().toString());
                 //scene = usernameFieldRegister.getScene();
-                String sql = "insert into `user`(username, password, realName, age) " +
-                        "values(?, ?, ?, ?)";
+                String sql = "insert into `user`(username, password, address, age, gender) " +
+                        "values(?, ?, ?, ?, ?)";
                 String returnTest = "null";
                 tmp.updateDBWithStatement(sql, registerInfo, returnTest);
                 if (returnTest.equals("success")){
@@ -127,12 +137,12 @@ public class registerController {
                 System.out.println("2");
                 break;
 
-            case "real name too long":
+            case "address too long":
                 switchTo("registerError.fxml");
                 System.out.println("3");
                 break;
 
-            case "tel number too long":
+            case "age too long":
                 switchTo("registerError.fxml");
                 System.out.println("4");
                 break;
@@ -142,6 +152,11 @@ public class registerController {
                 System.out.println("5");
         }
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        genderChoiceBox.getItems().addAll(gender);
     }
 }
 
