@@ -6,7 +6,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -14,8 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moviemanagement.commonUserViewController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
@@ -63,7 +61,7 @@
          <right>
             <VBox prefHeight="573.0" prefWidth="186.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXButton fx:id="comments" contentDisplay="TOP" prefHeight="146.0" prefWidth="186.0" text="Comments">
+                  <JFXButton fx:id="comments" contentDisplay="TOP" onAction="#switchToComment" prefHeight="146.0" prefWidth="186.0" text="Comments">
                      <font>
                         <Font size="28.0" />
                      </font>
@@ -87,7 +85,7 @@
                         <ImageView fitHeight="47.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="rate11" contentDisplay="TOP" layoutX="10.0" layoutY="302.0" prefHeight="146.0" prefWidth="186.0" text="Exit">
+                  <JFXButton fx:id="exit" contentDisplay="TOP" layoutX="10.0" layoutY="302.0" onAction="#switchToLogin" prefHeight="146.0" prefWidth="186.0" text="Exit">
                      <font>
                         <Font size="28.0" />
                      </font>

@@ -8,7 +8,11 @@ import java.util.List;
 
 
 public class JdbcUtils {
-    private Connection myConnection;
+    String mysqlurl = "jdbc:mysql://localhost:3306/MovieManagementSystem";
+    Connection myConnection = DriverManager.getConnection(mysqlurl, "root", "18721376230");;
+
+    public JdbcUtils() throws SQLException {
+    }
 
 
     public Connection databaseDriverConnection() throws ClassNotFoundException, SQLException {
@@ -33,7 +37,7 @@ public class JdbcUtils {
         boolean paramsResult = false;
         if (params.size() > 0){
             for (int i = 0; i < params.size(); i++){
-                if ( params.get(i)!= null ){
+                if ( params.get(i)!= null && !params.isEmpty()){
                     paramsResult = true;
                 }
             }
@@ -51,6 +55,12 @@ public class JdbcUtils {
         }
         return result;
     }
+
+
+    //public void loginWithDB(String sql, ){}
+
+
+
 
 
 

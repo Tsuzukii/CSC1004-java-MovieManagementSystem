@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moviemanagement.loginErrorController">
+   <children>
+      <ImageView fx:id="myImageView" fitHeight="399.0" fitWidth="720.0" layoutX="3.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/loginBackground.jpg" />
+         </image>
+         <effect>
+            <GaussianBlur radius="8.0" />
+         </effect>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="164.0" layoutY="110.0" prefHeight="78.0" prefWidth="387.0" text="Oops……Something went wrong" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="54.0" layoutY="179.0" prefHeight="78.0" prefWidth="607.0" text="Either your username or your password is wrong" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="loginErrorReturn" buttonType="RAISED" layoutX="223.0" layoutY="281.0" onAction="#switchToLogin" text="Click here to login again" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6842105388641357" green="0.6525341272354126" blue="0.6525341272354126" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moviemanagement.registerErrorController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <ImageView fx:id="myImageView" fitHeight="399.0" fitWidth="720.0" layoutX="-3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/loginBackground.jpg" /
+               </image>
+               <effect>
+                  <GaussianBlur radius="8.0" />
+               </effect>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="2.0" layoutY="-1.0" prefHeight="136.0" prefWidth="709.0" text="Movie Magament System" textAlignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <effect>
+                  <Bloom threshold="0.26" />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="32.0" layoutY="102.0" prefHeight="94.0" prefWidth="651.0" text="Oops……Something went wrong." textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="199.0" text=" Either your input information is too long or the user has existed." textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="229.0" layoutY="288.0" onAction="#switchTMyRegister" text="Click to return to Register" textFill="WHITE" underline="true" wrapText="true">
+               <font>
+                  <Font size="21.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.052256532066508314">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
