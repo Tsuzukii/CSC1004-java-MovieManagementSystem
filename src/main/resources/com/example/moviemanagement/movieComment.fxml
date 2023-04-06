@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -31,5 +32,6 @@
       </JFXButton>
       <TextArea fx:id="commentTextArea" layoutX="200.0" layoutY="143.0" prefHeight="127.0" prefWidth="321.0" />
       <TextField fx:id="movieNameTextField" layoutX="200.0" layoutY="64.0" prefHeight="26.0" prefWidth="300.0" />
+      <ChoiceBox fx:id="movieChoiceBox" layoutX="225.0" layoutY="26.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

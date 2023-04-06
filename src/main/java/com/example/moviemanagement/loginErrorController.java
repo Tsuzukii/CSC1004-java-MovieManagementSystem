@@ -17,8 +17,8 @@ public class loginErrorController {
     @FXML
     private JFXButton loginErrorReturn;
 
+    //onAction. When clicking buttons, the scene would be loaded to loginView
     public void switchToLogin(ActionEvent register) throws IOException {
-        //是否是路径问题
         root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
         stage = (Stage)((Node)register.getSource()).getScene().getWindow();
         scene = new Scene(root);

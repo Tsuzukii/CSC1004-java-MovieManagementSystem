@@ -50,6 +50,7 @@ public class registerController implements Initializable {
 
     private String[] gender = {"Male", "Female"};
 
+    //switching scenes to certain fxml files. Note that scene should be first loaded or there'll be InvocationTargetException.
     public void switchTo(String sce) throws IOException{
         root = FXMLLoader.load(getClass().getResource(sce));
         stage = (Stage)(scene.getWindow());
@@ -59,6 +60,7 @@ public class registerController implements Initializable {
         System.out.println("Switching");
     }
 
+    //switching scenes to login window, using this function can include onAction function through clicking the button
     public void switchToLogin(ActionEvent register) throws IOException {
         root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
         stage = (Stage)((Node)register.getSource()).getScene().getWindow();
@@ -69,13 +71,13 @@ public class registerController implements Initializable {
     }
 
     public void setMyRegister() throws SQLException, IOException {
-
+        //initialize the scene
         scene = usernameFieldRegister.getScene();
         scene = passwordFieldRegister.getScene();
         scene = addressRegister.getScene();
         scene = ageRegister.getScene();
 
-
+        //connect with the DB
         try {
             JdbcUtils tmp = new JdbcUtils();
             tmp.databaseDriverConnection();
@@ -87,6 +89,7 @@ public class registerController implements Initializable {
             throw new RuntimeException(e);
         }
 
+        //limit the length of input information, while checking repetition
         inputUtils myInput = new inputUtils();
         int maxlength = 60;
         String errorinfo = "null";
@@ -106,7 +109,8 @@ public class registerController implements Initializable {
         else if(usernameFieldRegister.getText().equals(null)||passwordFieldRegister.getText().equals("")||addressRegister.getText().equals("")||ageRegister.getText().equals("")||genderChoiceBox.getValue().equals("")){
             errorinfo = "input information is null";
         }
-        //查重
+
+        //If errorInfo is null, the function would add new users to the database. Either too complex information or repetition would lead to error page
         switch (errorinfo)
         {
             case "null" :
@@ -154,6 +158,7 @@ public class registerController implements Initializable {
 
     }
 
+    //initialize the ChoiceBox
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         genderChoiceBox.getItems().addAll(gender);

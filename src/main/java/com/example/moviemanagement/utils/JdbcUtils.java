@@ -14,7 +14,7 @@ public class JdbcUtils {
     public JdbcUtils() throws SQLException {
     }
 
-
+    //database driver connection
     public Connection databaseDriverConnection() throws ClassNotFoundException, SQLException {
         System.out.println("Start dealing with login");
         //load mysql driver
@@ -31,10 +31,15 @@ public class JdbcUtils {
 
 
     private PreparedStatement myPreparedState;
+
+    /*update database with modified statement
+        including
+     */
     public String updateDBWithStatement(String sql, List<Object> params, String re) throws SQLException {
         String result = "error";
         myPreparedState = myConnection.prepareStatement(sql);
         boolean paramsResult = false;
+
         if (params.size() > 0){
             for (int i = 0; i < params.size(); i++){
                 if ( params.get(i)!= null && !params.isEmpty()){
@@ -42,6 +47,7 @@ public class JdbcUtils {
                 }
             }
         }
+
         if (paramsResult){
             for (int i = 0; i < params.size(); i++){
                 myPreparedState.setObject(i+1, params.get(i));
@@ -57,7 +63,6 @@ public class JdbcUtils {
     }
 
 
-    //public void loginWithDB(String sql, ){}
 
 
 

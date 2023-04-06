@@ -14,6 +14,7 @@ public class registerErrorController {
     private Scene scene;
     private Parent root;
 
+    //onAction. When clicking buttons, the scene would be loaded to registerView
     public void switchTMyRegister(ActionEvent register) throws IOException {
         root = FXMLLoader.load(getClass().getResource("registerView.fxml"));
         stage = (Stage)((Node)register.getSource()).getScene().getWindow();

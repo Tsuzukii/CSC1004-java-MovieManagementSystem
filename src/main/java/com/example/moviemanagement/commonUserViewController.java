@@ -4,6 +4,7 @@ package com.example.moviemanagement;
 import com.leewyatt.rxcontrols.animation.carousel.AnimAround;
 import com.leewyatt.rxcontrols.animation.carousel.AnimFade;
 import com.leewyatt.rxcontrols.controls.RXCarousel;
+import com.leewyatt.rxcontrols.controls.RXFillButton;
 import com.leewyatt.rxcontrols.pane.RXCarouselPane;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
@@ -28,6 +29,9 @@ public class commonUserViewController {
     private Parent root;
 
     @FXML
+    private RXFillButton commentButton;
+
+    @FXML
     private RXCarousel movieCarousel;
 
 
@@ -43,7 +47,7 @@ public class commonUserViewController {
             ImageView movieView = new ImageView(getClass().getResource("/homeMovie/" + (i + 1 ) + ".jpeg").toExternalForm());
             Label movieLabel = new Label(classicMovie[i]);
             movieLabel.setPrefSize(250, 35);
-            movieLabel.setStyle("-fx-alignment: center;-fx-background-color:transparent;-fx-text-fill:black;-fx-font-size: 20");
+            movieLabel.setStyle("-fx-alignment: center;-fx-background-color: transparent;-fx-text-fill: black;-fx-font-size: 20");
             StackPane stackPane = new StackPane(movieView, movieLabel);
             RXCarouselPane myMoviePane = new RXCarouselPane(stackPane);
             movieCarousel.setCarouselAnimation(new AnimAround(true));
@@ -65,27 +69,27 @@ public class commonUserViewController {
         movieCarousel.setPaneList(myMovies);
     }
 
-        public void switchToComment (ActionEvent register) throws IOException {
-            root = FXMLLoader.load(getClass().getResource("movieComment.fxml"));
-            stage = (Stage) ((Node) register.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            stage.centerOnScreen();
-            System.out.println("Switching to Comment");
-
-        }
-
-
-        public void switchToLogin (ActionEvent register) throws IOException {
-            root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
-            stage = (Stage) ((Node) register.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            stage.centerOnScreen();
-            System.out.println("Switching to CommonUser");
-        }
-
-
+    //onAction. When clicking buttons, the scene would be loaded to registerView
+    public void switchToComment (ActionEvent register) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("movieComment.fxml"));
+        stage = (Stage) ((Node) register.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.centerOnScreen();
+        System.out.println("Switching to Comment");
     }
+
+    //onAction. When clicking buttons, the scene would be loaded to loginView
+    public void switchToLogin (ActionEvent register) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
+        stage = (Stage) ((Node) register.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.centerOnScreen();
+        System.out.println("Switching to CommonUser");
+    }
+
+
+}

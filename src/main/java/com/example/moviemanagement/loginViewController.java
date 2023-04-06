@@ -1,5 +1,6 @@
 package com.example.moviemanagement;
 
+import com.example.moviemanagement.models.commonUser;
 import com.example.moviemanagement.utils.JdbcUtils;
 import com.jfoenix.controls.JFXCheckBox;
 import javafx.event.ActionEvent;
@@ -23,6 +24,7 @@ public class loginViewController {
     Connection myConnectionLogin = DriverManager.getConnection(mysqlurl, "root", "18721376230");
     private ResultSet resultSet;
     private ResultSet myResult;
+
     //JavaFX variables
     @FXML
     private TextField usernameField;
@@ -63,7 +65,7 @@ public class loginViewController {
     public loginViewController() throws SQLException {
     }
 
-
+    //switch to certain scenes
     public void switchTo(String sce) throws IOException{
         scene = usernameField.getScene();
         root = FXMLLoader.load(getClass().getResource(sce));
@@ -76,8 +78,9 @@ public class loginViewController {
         System.out.println("Switching to Register");
     }
 
-
+    //dealing with login, differentiating normal users and admins.
     public void tryLogin() throws Exception {
+        //connect with DB driver
         try {
             JdbcUtils tmp = new JdbcUtils();
             tmp.databaseDriverConnection();
@@ -93,12 +96,15 @@ public class loginViewController {
         scene = usernameField.getScene();
         String inputUsn = usernameField.getText();
         String inputPwd = passwordField.getText();
+
+        //admin user Login function, constructing query form, looking up certain information in DB
         if (adminCheckbox.isSelected()) {
             String sql = "select * from `admin` where username = ? and password = ?";
             List<Object> myQuestion = new ArrayList<>();
             myQuestion.add(inputUsn);
             myQuestion.add(inputPwd);
-            myPrepared = myConnectionLogin.prepareStatement(sql);
+            myPrepared = myConnectionLogin.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
             myPrepared.setObject(1, myQuestion.get(0));
             myPrepared.setObject(2, myQuestion.get(1));
             resultSet = myPrepared.executeQuery();
@@ -106,7 +112,7 @@ public class loginViewController {
             int counter = 0;
             int col = metaData.getColumnCount();
             while (resultSet.next()) {
-                counter++;
+                counter ++;
                 System.out.println("ID: " + resultSet.getInt("id"));
             }
             if (counter == 0) {
@@ -115,6 +121,15 @@ public class loginViewController {
                 stage.centerOnScreen();
                 System.out.println("Either password or username is incorrect.");
             } else {
+                resultSet.beforeFirst();
+                while ((resultSet.next()) && (resultSet != null)) {
+                    commonUser.setUserType("admin");
+                    commonUser.setUsername(usernameField.getText());
+                    commonUser.setUserid(resultSet.getInt("id"));
+                }
+                if (commonUser.getType().equals("admin")){
+                    System.out.println("Initialize successfully");
+                }
                 switchTo("adminUserView.fxml");
                 stage.centerOnScreen();
                 stage.setTitle("MovieManagementSystem_admin");
@@ -126,7 +141,8 @@ public class loginViewController {
             List<Object> myQuestion = new ArrayList<>();
             myQuestion.add(inputUsn);
             myQuestion.add(inputPwd);
-            myPrepared = myConnectionLogin.prepareStatement(sql);
+            myPrepared = myConnectionLogin.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
             myPrepared.setObject(1, myQuestion.get(0));
             myPrepared.setObject(2, myQuestion.get(1));
             resultSet = myPrepared.executeQuery();
@@ -136,6 +152,8 @@ public class loginViewController {
             while (resultSet.next()) {
                 counter++;
                 System.out.println("ID: " + resultSet.getInt("id"));
+                System.out.println(resultSet.getNString("gender"));
+                System.out.println(resultSet.getNString("username"));
             }
             if (counter == 0) {
                 switchTo("loginError.fxml");
@@ -143,6 +161,17 @@ public class loginViewController {
                 stage.setTitle("MovieManagementLoginError");
             } else {
                 scene = passwordField.getScene();
+                resultSet.beforeFirst();
+                while ((resultSet.next()) && (resultSet != null)){
+                    commonUser.setUserid(resultSet.getInt("id"));
+                    commonUser.setUserType("commonUser");
+                    commonUser.setGender(resultSet.getNString("gender"));
+                    commonUser.setUsername(resultSet.getNString("username"));
+                    commonUser.setAge(resultSet.getInt("age"));
+                }
+                if (commonUser.getType().equals("commonUser") && commonUser.getName().equals(usernameField.getText())){
+                    System.out.println("Users Initialize successfully");
+                }
                 switchTo("newCommonUser.fxml");
                 stage.setTitle("MovieManagementSystem_user");
             }
