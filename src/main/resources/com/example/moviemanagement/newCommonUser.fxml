@@ -61,8 +61,8 @@
                      <content>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <RXCarousel fx:id="picCarousel" layoutY="77.0" prefHeight="522.0" prefWidth="373.0" />
-                              <RXCarousel fx:id="infoCarousel" layoutX="375.0" layoutY="77.0" prefHeight="522.0" prefWidth="364.0" />
+                              <RXCarousel fx:id="picCarousel" arrowDisplayMode="SHOW" layoutY="67.0" prefHeight="532.0" prefWidth="370.0" />
+                              <RXCarousel fx:id="infoCarousel" arrowDisplayMode="SHOW" layoutX="372.0" layoutY="67.0" prefHeight="532.0" prefWidth="370.0" />
                               <RXLineButton layoutX="69.0" layoutY="8.0" lineType="RISE" prefWidth="207.0" text="Movie  Poster">
                                  <font>
                                     <Font size="21.0" />

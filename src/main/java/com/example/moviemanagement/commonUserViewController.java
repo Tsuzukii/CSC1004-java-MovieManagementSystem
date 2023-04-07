@@ -1,8 +1,7 @@
 package com.example.moviemanagement;
 
 
-import com.leewyatt.rxcontrols.animation.carousel.AnimAround;
-import com.leewyatt.rxcontrols.animation.carousel.AnimFade;
+import com.leewyatt.rxcontrols.animation.carousel.*;
 import com.leewyatt.rxcontrols.controls.RXCarousel;
 import com.leewyatt.rxcontrols.controls.RXFillButton;
 import com.leewyatt.rxcontrols.pane.RXCarouselPane;
@@ -111,23 +110,24 @@ public class commonUserViewController {
     private void movieInfoCarousel() {
         ArrayList<RXCarouselPane> moviesPics = new ArrayList<>();
         ArrayList<RXCarouselPane> moviesInfo = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             ImageView movieView = new ImageView(getClass().getResource("/moviePoster/" + (i + 1 ) + ".jpeg").toExternalForm());
             ImageView infoView = new ImageView(getClass().getResource("/movieInfo/" + (i + 1 ) + ".jpeg").toExternalForm());
             StackPane stackPaneMovie = new StackPane(movieView);
             StackPane stackPaneInfo = new StackPane(infoView);
             RXCarouselPane myMoviePane = new RXCarouselPane(stackPaneMovie);
             RXCarouselPane myInfoPane = new RXCarouselPane(stackPaneInfo);
-            picCarousel.setCarouselAnimation(new AnimAround(true));
-            infoCarousel.setCarouselAnimation(new AnimAround(true));
-            Duration T = new Duration(1100);
-            picCarousel.animationTimeProperty().set(T);
-            infoCarousel.animationTimeProperty().set(T);
+            picCarousel.setCarouselAnimation(new AnimCircle());
+            infoCarousel.setCarouselAnimation(new AnimCorner());
+            //Duration T = new Duration(1100);
+            //picCarousel.animationTimeProperty().set(T);
+            //infoCarousel.animationTimeProperty().set(T);
             moviesPics.add(myMoviePane);
             moviesInfo.add(myInfoPane);
         }
         picCarousel.setAutoSwitch(false);
         infoCarousel.setAutoSwitch(false);
+        infoCarousel.arrowDisplayModeProperty();
         picCarousel.setPaneList(moviesPics);
         infoCarousel.setPaneList(moviesInfo);
 
