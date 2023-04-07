@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.leewyatt.rxcontrols.controls.RXCarousel?>
 <?import com.leewyatt.rxcontrols.controls.RXFillButton?>
 <?import com.leewyatt.rxcontrols.controls.RXLineButton?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -60,7 +60,20 @@
                 <Tab text="Movie">
                      <content>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                        </AnchorPane>
+                           <children>
+                              <RXCarousel fx:id="picCarousel" layoutY="77.0" prefHeight="522.0" prefWidth="373.0" />
+                              <RXCarousel fx:id="infoCarousel" layoutX="375.0" layoutY="77.0" prefHeight="522.0" prefWidth="364.0" />
+                              <RXLineButton layoutX="69.0" layoutY="8.0" lineType="RISE" prefWidth="207.0" text="Movie  Poster">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </RXLineButton>
+                              <RXLineButton layoutX="444.0" layoutY="8.0" prefWidth="207.0" text="Movie  Information">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </RXLineButton>
+                           </children></AnchorPane>
                      </content>
                 </Tab>
                 <Tab text="More Info">
@@ -82,23 +95,23 @@
                      <font>
                         <Font size="32.0" />
                      </font>
+                     <stylesheets>
+                         <URL value="@commentButton.css" />
+                     </stylesheets>
                   </RXFillButton>
-                  <JFXButton fx:id="rate1" contentDisplay="TOP" layoutX="10.0" layoutY="156.0" prefHeight="146.0" prefWidth="186.0" text="Upload">
+                  <RXFillButton fx:id="recommendButton" fillType="BOTTOM_TO_TOP" prefHeight="214.0" prefWidth="162.0" text="Recommend">
                      <font>
                         <Font size="28.0" />
                      </font>
-                     <graphic>
-                        <ImageView fitHeight="47.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton fx:id="exit" contentDisplay="TOP" layoutX="10.0" layoutY="302.0" onAction="#switchToLogin" prefHeight="182.0" prefWidth="162.0" text="Exit">
+                  </RXFillButton>
+                  <RXFillButton fx:id="exitButton" fillType="HOR_TO_SIDE" layoutX="10.0" layoutY="223.0" onAction="#switchToLogin" prefHeight="213.0" prefWidth="162.0" text="Exit">
                      <font>
-                        <Font size="28.0" />
+                        <Font size="38.0" />
                      </font>
-                     <graphic>
-                        <ImageView fitHeight="47.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </JFXButton>
+                      <stylesheets>
+                          <URL value="@exitButton.css" />
+                      </stylesheets>
+                  </RXFillButton>
                </children>
             </VBox>
          </right>

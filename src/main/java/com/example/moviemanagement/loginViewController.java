@@ -128,7 +128,7 @@ public class loginViewController {
                     commonUser.setUserid(resultSet.getInt("id"));
                 }
                 if (commonUser.getType().equals("admin")){
-                    System.out.println("Initialize successfully");
+                    System.out.println("Admin Initialize successfully");
                 }
                 switchTo("adminUserView.fxml");
                 stage.centerOnScreen();

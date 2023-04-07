@@ -1,6 +1,7 @@
 package com.example.moviemanagement;
 
 
+import com.example.moviemanagement.models.commonUser;
 import com.example.moviemanagement.utils.JdbcUtils;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -11,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -41,11 +43,15 @@ public class movieCommentController implements Initializable {
     @FXML
     private ChoiceBox<String> movieChoiceBox;
 
+
     @FXML
-    private TextField movieNameTextField;
+    private Label movieLabel;
+
+    @FXML
+    private ChoiceBox ratingChoiceBox;
 
     public List<String> movie = new ArrayList<>();
-
+    private Object[] ratingScore = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
     //onAction. When clicking buttons, the scene would be loaded to commonUser page.
     public void switchToMain(ActionEvent register) throws IOException {
@@ -56,6 +62,16 @@ public class movieCommentController implements Initializable {
         stage.show();
         stage.centerOnScreen();
         System.out.println("Switching to Login");
+    }
+
+    public void initializeCommentInfo(List<Object> info){
+        String commentUsn = commonUser.getName();
+        int commentAge = commonUser.getAge();
+        int rating = (int) ratingChoiceBox.getValue();
+        info.add(commentUsn);
+        info.add(commentTextArea.getText());
+        info.add(commentAge);
+        info.add(rating);
     }
 
     public void commentDealing() throws SQLException {
@@ -69,23 +85,59 @@ public class movieCommentController implements Initializable {
             System.out.println("SQLException");
             throw new RuntimeException(e);
         }
-        String commentMovie = movieNameTextField.getText();
+
+        String commentMovie = movieChoiceBox.getValue();
+        JdbcUtils tmp = new JdbcUtils();
+
         switch (commentMovie){
             case "The Shawshank Redemption":
-                JdbcUtils tmp = new JdbcUtils();
-                List<Object> movieInfo = new ArrayList<>();
-                movieInfo.add(commentTextArea.getText());
-                String sql = "insert into `The Shawshank Redemption`(username, comments) " +
-                        "values(?, ?)";
+                List<Object> shawshankMovieInfo = new ArrayList<>();
+                initializeCommentInfo(shawshankMovieInfo);
+                String sql = "insert into `The Shawshank Redemption`(username, comments, age, rating) " +
+                        "values(?, ?, ?, ?)";
                 String returnTest = "null";
-                tmp.updateDBWithStatement(sql, movieInfo, returnTest);
+                tmp.updateDBWithStatement(sql, shawshankMovieInfo, returnTest);
                 if (returnTest.equals("success")){
                     System.out.println("register success");
                 }
                 break;
-
+            case "Forrest Gump":
+                List<Object> ForrestMovieInfo = new ArrayList<>();
+                initializeCommentInfo(ForrestMovieInfo);
+                String sqlForrest = "insert into `Forrest Gump`(username, comments, age, rating) " +
+                        "values(?, ?, ?, ?)";
+                String returnTestForrest = "null";
+                tmp.updateDBWithStatement(sqlForrest, ForrestMovieInfo, returnTestForrest);
+                if (returnTestForrest.equals("success")){
+                    System.out.println("register success");
+                }
+                break;
+            case "Brokeback Mountain":
+                List<Object> BrokebackMovieInfo = new ArrayList<>();
+                initializeCommentInfo(BrokebackMovieInfo);
+                String sqlBrokeback = "insert into `Brokeback Mountain`(username, comments, age, rating) " +
+                        "values(?, ?, ?, ?)";
+                String returnTestBrokeback = "null";
+                tmp.updateDBWithStatement(sqlBrokeback, BrokebackMovieInfo, returnTestBrokeback);
+                if (returnTestBrokeback.equals("success")){
+                    System.out.println("register success");
+                }
+            case "Leon":
+                List<Object> LeonMovieInfo = new ArrayList<>();
+                initializeCommentInfo(LeonMovieInfo);
+                String sqlLeon = "insert into `Leon`(username, comments, age, rating) " +
+                        "values(?, ?, ?, ?)";
+                String returnTestLeon = "null";
+                tmp.updateDBWithStatement(sqlLeon, LeonMovieInfo, returnTestLeon);
+                if (returnTestLeon.equals("success")){
+                    System.out.println("register success");
+                }
         }
 
+    }
+    public void getMovieName(ActionEvent event){
+        String myMovie = movieChoiceBox.getValue();
+        movieLabel.setText(myMovie);
     }
 
     @Override
@@ -93,6 +145,9 @@ public class movieCommentController implements Initializable {
         movie.add("The Shawshank Redemption");
         movie.add("Forrest Gump");
         movie.add("Leon");
+        movie.add("Brokeback Mountain");
         movieChoiceBox.getItems().addAll(movie);
+        movieChoiceBox.setOnAction(this::getMovieName);
+        ratingChoiceBox.getItems().addAll(ratingScore);
     }
 }

@@ -32,15 +32,28 @@ public class commonUserViewController {
     private RXFillButton commentButton;
 
     @FXML
+    private RXFillButton recommendButton;
+
+    @FXML
+    private RXFillButton exitButton;
+
+    @FXML
     private RXCarousel movieCarousel;
+
+    @FXML
+    private RXCarousel picCarousel;
+
+    @FXML
+    private RXCarousel infoCarousel;
 
 
     @FXML
     void initialize() {
-        carouselInitialize();
+        homeCarouselInitialize();
+        movieInfoCarousel();
     }
 
-    private void carouselInitialize() {
+    private void homeCarouselInitialize() {
         String[] classicMovie = {"The Shawshank Redemption","Forrest Gump","Leon"};
         ArrayList<RXCarouselPane> myMovies = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
@@ -54,6 +67,7 @@ public class commonUserViewController {
             movieLabel.setTranslateY(215);
             Duration T = new Duration(1100);
             movieCarousel.animationTimeProperty().set(T);
+            /*
             TranslateTransition myOpened = new TranslateTransition(Duration.millis(0), movieLabel);
             myMoviePane.setOnOpened(event -> {
                 myOpened.play();
@@ -64,6 +78,8 @@ public class commonUserViewController {
                 myClosing.play();
                 event.consume();
             });
+
+             */
             myMovies.add(myMoviePane);
         }
         movieCarousel.setPaneList(myMovies);
@@ -91,5 +107,30 @@ public class commonUserViewController {
         System.out.println("Switching to CommonUser");
     }
 
+
+    private void movieInfoCarousel() {
+        ArrayList<RXCarouselPane> moviesPics = new ArrayList<>();
+        ArrayList<RXCarouselPane> moviesInfo = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            ImageView movieView = new ImageView(getClass().getResource("/moviePoster/" + (i + 1 ) + ".jpeg").toExternalForm());
+            ImageView infoView = new ImageView(getClass().getResource("/movieInfo/" + (i + 1 ) + ".jpeg").toExternalForm());
+            StackPane stackPaneMovie = new StackPane(movieView);
+            StackPane stackPaneInfo = new StackPane(infoView);
+            RXCarouselPane myMoviePane = new RXCarouselPane(stackPaneMovie);
+            RXCarouselPane myInfoPane = new RXCarouselPane(stackPaneInfo);
+            picCarousel.setCarouselAnimation(new AnimAround(true));
+            infoCarousel.setCarouselAnimation(new AnimAround(true));
+            Duration T = new Duration(1100);
+            picCarousel.animationTimeProperty().set(T);
+            infoCarousel.animationTimeProperty().set(T);
+            moviesPics.add(myMoviePane);
+            moviesInfo.add(myInfoPane);
+        }
+        picCarousel.setAutoSwitch(false);
+        infoCarousel.setAutoSwitch(false);
+        picCarousel.setPaneList(moviesPics);
+        infoCarousel.setPaneList(moviesInfo);
+
+    }
 
 }

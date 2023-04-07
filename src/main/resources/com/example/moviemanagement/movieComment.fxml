@@ -4,13 +4,12 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moviemanagement.movieCommentController">
    <children>
-      <Label layoutX="69.0" layoutY="61.0" prefHeight="32.0" prefWidth="103.0" text="Movie Name:">
+      <Label layoutX="69.0" layoutY="32.0" prefHeight="32.0" prefWidth="103.0" text="Movie Name:">
          <font>
             <Font size="18.0" />
          </font>
@@ -20,7 +19,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXButton fx:id="myConfirm" layoutX="110.0" layoutY="292.0" prefHeight="60.0" prefWidth="123.0" text="Confirm">
+      <JFXButton fx:id="myConfirm" layoutX="110.0" layoutY="292.0" onAction="#commentDealing" prefHeight="60.0" prefWidth="123.0" text="Confirm">
          <font>
             <Font size="22.0" />
          </font>
@@ -30,8 +29,14 @@
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <TextArea fx:id="commentTextArea" layoutX="200.0" layoutY="143.0" prefHeight="127.0" prefWidth="321.0" />
-      <TextField fx:id="movieNameTextField" layoutX="200.0" layoutY="64.0" prefHeight="26.0" prefWidth="300.0" />
-      <ChoiceBox fx:id="movieChoiceBox" layoutX="225.0" layoutY="26.0" prefWidth="150.0" />
+      <TextArea fx:id="commentTextArea" layoutX="200.0" layoutY="143.0" prefHeight="127.0" prefWidth="330.0" />
+      <ChoiceBox fx:id="movieChoiceBox" layoutX="200.0" layoutY="35.0" prefHeight="27.0" prefWidth="123.0" />
+      <Label fx:id="movieLabel" layoutX="376.0" layoutY="35.0" prefHeight="27.0" prefWidth="189.0" />
+      <Label layoutX="69.0" layoutY="86.0" prefHeight="32.0" prefWidth="103.0" text="Rating :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="ratingChoiceBox" layoutX="200.0" layoutY="90.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
