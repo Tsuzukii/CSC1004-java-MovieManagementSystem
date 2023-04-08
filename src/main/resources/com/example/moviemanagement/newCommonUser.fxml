@@ -99,7 +99,7 @@
                          <URL value="@commentButton.css" />
                      </stylesheets>
                   </RXFillButton>
-                  <RXFillButton fx:id="recommendButton" fillType="BOTTOM_TO_TOP" prefHeight="214.0" prefWidth="162.0" text="Recommend">
+                  <RXFillButton fx:id="recommendButton" fillType="BOTTOM_TO_TOP" onAction="#switchToGPT" prefHeight="214.0" prefWidth="162.0" text="Recommend">
                      <font>
                         <Font size="28.0" />
                      </font>
