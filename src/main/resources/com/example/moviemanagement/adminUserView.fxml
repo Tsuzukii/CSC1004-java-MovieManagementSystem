@@ -2,18 +2,42 @@
 
 <?import com.leewyatt.rxcontrols.controls.RXFillButton?>
 <?import com.leewyatt.rxcontrols.controls.RXLineButton?>
+<?import com.leewyatt.rxcontrols.controls.RXTranslationButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="527.0" prefWidth="675.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moviemanagement.adminUserViewController">
    <children>
-      <RXLineButton layoutX="98.0" layoutY="8.0" prefWidth="479.0" text="Welcome to Movie Management System, Admin Users! ">
+      <RXLineButton layoutX="30.0" layoutY="7.0" prefWidth="616.0" text="Welcome to Movie Management System, Admin Users! ">
          <font>
-            <Font size="20.0" />
+            <Font size="26.0" />
          </font>
       </RXLineButton>
-      <RXFillButton layoutX="-4.0" layoutY="207.0" prefHeight="323.0" prefWidth="225.0" text="RXFillButton" />
-      <RXFillButton layoutX="219.0" layoutY="207.0" prefHeight="325.0" prefWidth="230.0" text="RXFillButton" />
-      <RXFillButton layoutX="449.0" layoutY="206.0" prefHeight="323.0" prefWidth="225.0" text="RXFillButton" />
+      <RXFillButton layoutX="-4.0" layoutY="207.0" prefHeight="323.0" prefWidth="225.0" text="Charts">
+         <font>
+            <Font size="54.0" />
+         </font></RXFillButton>
+      <RXFillButton layoutX="219.0" layoutY="207.0" prefHeight="325.0" prefWidth="230.0" text="Add  /&#10;Remove">
+         <font>
+            <Font size="48.0" />
+         </font></RXFillButton>
+      <RXFillButton layoutX="449.0" layoutY="206.0" prefHeight="323.0" prefWidth="225.0" text="Ratings">
+         <font>
+            <Font size="53.0" />
+         </font></RXFillButton>
+      <RXTranslationButton fx:id="adminLogin" layoutX="251.0" layoutY="89.0" onAction="#switchToLogin" prefHeight="71.0" prefWidth="174.0" text="Login">
+         <graphic>
+            <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/homebutton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="34.0" />
+         </font>
+      </RXTranslationButton>
    </children>
 </AnchorPane>

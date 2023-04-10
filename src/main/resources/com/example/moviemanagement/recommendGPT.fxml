@@ -18,8 +18,14 @@
                <children>
                   <AnchorPane prefHeight="151.0" prefWidth="680.0">
                      <children>
-                        <ImageView fitHeight="64.0" fitWidth="63.0" layoutX="570.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label layoutX="181.0" layoutY="41.0" prefHeight="68.0" prefWidth="344.0" style="-fx-border-color: black;" text="Label&#10;qq&#10;" />
+                        <ImageView fitHeight="64.0" fitWidth="63.0" layoutX="570.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/user.png" />
+                           </image></ImageView>
+                        <Label layoutX="181.0" layoutY="41.0" prefHeight="68.0" prefWidth="344.0" style="-fx-border-color: black;" text="Hello!&#10;">
+                           <font>
+                              <Font size="32.0" />
+                           </font></Label>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="168.0" prefWidth="680.0">
@@ -29,7 +35,10 @@
                               <Image url="@../../../images/openai.jpg" />
                            </image>
                         </ImageView>
-                        <Label layoutX="129.0" layoutY="62.0" prefHeight="68.0" prefWidth="351.0" style="-fx-border-color: black;" text="Label&#10;qq&#10;" />
+                        <Label layoutX="129.0" layoutY="20.0" prefHeight="110.0" prefWidth="406.0" style="-fx-border-color: black;" text="This is just a demo interface of recommending. Due realtime  &#10;responses require much JSON knowledge and stable api, &#10;which is completely out of my current abillity. &#10;Here the chatting part will only show the same infomation&#10;with the users' input.">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
                      </children>
                   </AnchorPane>
                </children>
