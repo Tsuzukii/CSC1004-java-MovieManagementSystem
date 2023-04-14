@@ -128,7 +128,9 @@ public class registerController implements Initializable {
                 tmp.updateDBWithStatement(sql, registerInfo, returnTest);
                 if (returnTest.equals("success")){
                     System.out.println("register success");
+                    switchTo("registerSuccess.fxml");
                 }
+                System.out.println(returnTest);
                 break;
 
             case "username too long":

@@ -20,10 +20,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class movieCommentController implements Initializable {
 
@@ -88,6 +85,7 @@ public class movieCommentController implements Initializable {
 
         String commentMovie = movieChoiceBox.getValue();
         JdbcUtils tmp = new JdbcUtils();
+        System.out.println(commentMovie);
 
         switch (commentMovie){
             case "The Shawshank Redemption":
@@ -132,6 +130,16 @@ public class movieCommentController implements Initializable {
                 if (returnTestLeon.equals("success")){
                     System.out.println("register success");
                 }
+            case "addedmovie1":
+                List<Object> addMovieInfo1 = new ArrayList<>();
+                initializeCommentInfo(addMovieInfo1);
+                String sqladd1 = "insert into `addedmovie1`(username, comments, age, rating) " +
+                        "values(?, ?, ?, ?)";
+                String returnTestadd1 = "null";
+                tmp.updateDBWithStatement(sqladd1, addMovieInfo1, returnTestadd1);
+                if (returnTestadd1.equals("success")){
+                    System.out.println("register success");
+                }
         }
 
     }
@@ -142,12 +150,34 @@ public class movieCommentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        movie.add("The Shawshank Redemption");
-        movie.add("Forrest Gump");
-        movie.add("Leon");
-        movie.add("Brokeback Mountain");
-        movieChoiceBox.getItems().addAll(movie);
+        adminUserViewController adminUserViewController = null;
+        try {
+            adminUserViewController = new adminUserViewController();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            adminUserViewController.arrayListInitialize((ArrayList)movie);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        List<Object> myMovie = new ArrayList<>();
+        for (int i = 0; i < movie.size(); i++){
+            myMovie.add(movie.get(i));
+        }
+        List<String> strings = myMovie.stream()
+                .map(object -> Objects.toString(object, null))
+                .toList();
+        int count = strings.size();
+        for (int i = 0; i < count; i++){
+            movieChoiceBox.getItems().add(strings.get(i).toString());
+        }
+
         movieChoiceBox.setOnAction(this::getMovieName);
         ratingChoiceBox.getItems().addAll(ratingScore);
+        System.out.println("123");
     }
+
+
 }

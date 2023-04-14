@@ -12,6 +12,7 @@ public class commonUser {
     public static void setUserid(int id){
         commonUser.userid = id;
     }
+
     public static void setUsername(String name){
         commonUser.username = name;
     }

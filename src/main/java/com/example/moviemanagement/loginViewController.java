@@ -134,7 +134,6 @@ public class loginViewController {
                 stage.centerOnScreen();
                 stage.setTitle("MovieManagementSystem_admin");
             }
-
         }
         else{
             String sql = "select * from `user` where username = ? and password = ?";

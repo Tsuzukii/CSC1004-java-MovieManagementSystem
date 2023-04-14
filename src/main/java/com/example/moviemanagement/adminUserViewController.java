@@ -1,6 +1,7 @@
 package com.example.moviemanagement;
 
 
+import com.example.moviemanagement.utils.JdbcUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,20 +10,54 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class adminUserViewController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    static List<String> movie = new ArrayList<>();
+    private ResultSet resultSet;
+    private PreparedStatement myPrepared;
 
-    public void Initialize(){
-        movie.add("The Shawshank Redemption");
-        movie.add("Forrest Gump");
-        movie.add("Leon");
+    String url = "jdbc:mysql://localhost:3306/MovieManagementSystem";
+    Connection myConnection = DriverManager.getConnection(url, "root", "18721376230");
+
+    public adminUserViewController() throws SQLException {
     }
+
+    //什么时候更新
+    public void arrayListInitialize(ArrayList<String> arrayList) throws SQLException {
+        //connect with the DB
+        try {
+            JdbcUtils tmp = new JdbcUtils();
+            tmp.databaseDriverConnection();
+        } catch (ClassNotFoundException e) {
+            System.out.println("ClassNotFoundException");
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            System.out.println("SQLException");
+            throw new RuntimeException(e);
+        }
+
+        Statement statement = null;
+        String sql = "select * from `movieName` ";
+        statement = (Statement) myConnection.createStatement();
+        resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            String movie = resultSet.getString("movieName");
+            arrayList.add(movie);
+        }
+        //for (int i = 0; i < arrayList.size(); i++){
+            //System.out.println(arrayList.get(i));
+        //}
+        System.out.println("666");
+
+    }
+
 
     public void switchToLogin (ActionEvent register) throws IOException {
         root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
@@ -32,6 +67,16 @@ public class adminUserViewController {
         stage.show();
         stage.centerOnScreen();
         System.out.println("Switching to CommonUser");
+    }
+
+    public void switchToEdit (ActionEvent register) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("editMovie.fxml"));
+        stage = (Stage) ((Node) register.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.centerOnScreen();
+        System.out.println("Switching to Edit");
     }
 
 

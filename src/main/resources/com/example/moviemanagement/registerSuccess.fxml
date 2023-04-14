@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.MotionBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="390.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moviemanagement.registerErrorController">
+   <children>
+      <ImageView fitHeight="420.0" fitWidth="701.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/loginBackground.jpg" />
+         </image>
+         <effect>
+            <MotionBlur radius="16.71" />
+         </effect>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="-5.0" layoutY="86.0" prefHeight="132.0" prefWidth="701.0" text="You've succeeded registering!" textFill="WHITE">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="registerSuccess" layoutX="189.0" layoutY="263.0" onAction="#switchTMyLogin" prefHeight="59.0" prefWidth="312.0" text="Click here to switch to login" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

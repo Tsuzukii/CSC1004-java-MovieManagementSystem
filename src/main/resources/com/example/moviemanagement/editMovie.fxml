@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.leewyatt.rxcontrols.controls.RXTextField?>
+<?import com.leewyatt.rxcontrols.controls.RXTranslationButton?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="515.0" prefWidth="675.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moviemanagement.editMovieController">
+   <children>
+      <Label alignment="CENTER" layoutX="-7.0" layoutY="2.0" prefHeight="70.0" prefWidth="681.0" text="Add/Delete Movies">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <TabPane layoutX="2.0" layoutY="65.0" prefHeight="448.0" prefWidth="674.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Delete">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="396.0" prefWidth="588.0">
+                     <children>
+                        <ChoiceBox fx:id="movieNameDelete" layoutX="250.0" layoutY="53.0" prefHeight="31.0" prefWidth="235.0" />
+                        <Label layoutX="25.0" layoutY="52.0" prefHeight="33.0" prefWidth="203.0" text="Movies in the system:">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="25.0" layoutY="163.0" prefHeight="37.0" prefWidth="162.0" text="Selected movie:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="selectedDelete" layoutX="250.0" layoutY="169.0" prefHeight="31.0" prefWidth="235.0" text="Label" />
+                        <RXTranslationButton fx:id="deleteConfirm" layoutX="58.0" layoutY="295.0" onAction="#deleteMovie" text="Confirm">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="56.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/confirm.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </RXTranslationButton>
+                        <RXTranslationButton fx:id="deleteExitButton" layoutX="424.0" layoutY="296.0" onAction="#switchToAdminUser" text="Exit">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="45.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/homebutton.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </RXTranslationButton>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Add">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="396.0" prefWidth="542.0">
+                     <children>
+                        <RXTextField fx:id="movieNameAdd" layoutX="195.0" layoutY="60.0" prefHeight="39.0" prefWidth="247.0" />
+                        <Label layoutX="45.0" layoutY="60.0" prefHeight="39.0" prefWidth="136.0" text="Movie name:">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="42.0" layoutY="162.0" prefHeight="45.0" prefWidth="147.0" text="Input name:">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="addedMovieName" layoutX="207.0" layoutY="165.0" prefHeight="40.0" prefWidth="250.0" text="Label" />
+                        <RXTranslationButton fx:id="addConfirm" layoutX="84.0" layoutY="293.0" onAction="#addMovie" text="Confirm">
+                           <font>
+                              <Font size="32.0" />
+                           </font>
+                        </RXTranslationButton>
+                        <RXTranslationButton fx:id="addExitButton" layoutX="425.0" layoutY="293.0" onAction="#switchToAdminUser" text="Exit">
+                           <font>
+                              <Font size="39.0" />
+                           </font>
+                        </RXTranslationButton>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

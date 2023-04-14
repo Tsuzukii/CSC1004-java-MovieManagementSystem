@@ -55,11 +55,12 @@ public class JdbcUtils {
         }
         int resultNumber = -1;
         resultNumber = myPreparedState.executeUpdate();
+        System.out.println(resultNumber);
         if (resultNumber != -1){
             result = "success";
             re = "success";
         }
-        return result;
+        return re;
     }
 
 
