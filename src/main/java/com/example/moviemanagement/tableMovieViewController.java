@@ -56,14 +56,21 @@ public class tableMovieViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        String sql = "SELECT * FROM `The Shawshank Redemption`";
+        String sql2 = "SELECT * FROM `Leon`";
+        //String sql3 = "SELECT * FROM `Brokeback Mountain`";
+        String sql4 = "SELECT * FROM `Forrest Gump`";
         try {
-            activateTable();
+            activateTable(sql);
+            activateTable(sql2);
+            //activateTable(sql3);
+            //activateTable(sql4);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void activateTable() throws SQLException {
+    private void activateTable(String sql) throws SQLException {
         //connect with DB driver
         try {
             JdbcUtils tmp = new JdbcUtils();
@@ -77,7 +84,6 @@ public class tableMovieViewController implements Initializable {
         }
 
         movieList = FXCollections.observableArrayList();
-        String sql = "SELECT * FROM `The Shawshank Redemption`";
         resultSet = myConnection.createStatement().executeQuery(sql);
         ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
         String tableName = resultSetMetaData.getTableName(1);

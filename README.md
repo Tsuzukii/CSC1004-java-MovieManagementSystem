@@ -12,6 +12,7 @@
 ### Current problems
 1. return Test的string修改无效 是什么原因
 2. 加电影的计数器如何实现可以不加重复的？
+3. TableView的内容被覆盖了
 ## To be done
 1. 研究下upload图片 比如用户头像的上传 可以用组件中的avatar
 2. admin用户中的chart plots and bar plots 在数据库中的数据怎么对应 看下课件 大窗口分几个按键切换页面
