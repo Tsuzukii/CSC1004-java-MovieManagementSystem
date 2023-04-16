@@ -28,7 +28,7 @@
             <URL value="@commentButton.css" />
          </stylesheets>
       </RXFillButton>
-      <RXFillButton layoutX="449.0" layoutY="125.0" prefHeight="323.0" prefWidth="225.0" text="Ratings">
+      <RXFillButton layoutX="449.0" layoutY="125.0" onAction="#switchToTable" prefHeight="323.0" prefWidth="225.0" text="Rating&#10;Table">
          <font>
             <Font size="53.0" />
          </font>

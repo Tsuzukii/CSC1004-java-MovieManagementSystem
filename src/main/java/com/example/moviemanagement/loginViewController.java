@@ -23,7 +23,6 @@ public class loginViewController {
     String mysqlurl = "jdbc:mysql://localhost:3306/MovieManagementSystem";
     Connection myConnectionLogin = DriverManager.getConnection(mysqlurl, "root", "18721376230");
     private ResultSet resultSet;
-    private ResultSet myResult;
 
     //JavaFX variables
     @FXML
