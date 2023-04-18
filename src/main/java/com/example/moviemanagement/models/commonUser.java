@@ -1,6 +1,7 @@
 package com.example.moviemanagement.models;
 
-
+//save the current user's information in the system so that these information can be used to save in the database
+//while users commenting.
 public class commonUser {
     //initialize current admins or users.
     private static int userid;

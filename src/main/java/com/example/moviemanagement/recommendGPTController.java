@@ -17,6 +17,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/*
+Recommendation: This part just includes a demo interface of recommending. I planned to use OpenAI' API to generate movie recommendation
+information. However, Due to the situation that realtime responses require much JSON knowledge and stable api, which
+is completely out of my current ability. Here's the chatting part I kept which will only show the same information with the users' input.
+ */
 public class recommendGPTController {
     private Stage stage;
     private Scene scene;
@@ -28,17 +33,21 @@ public class recommendGPTController {
     @FXML
     private VBox msgBox;
 
+    //onAction on buttons to send messages while calling "addMsg" generating new boxes.
     public void sendMsg(){
         String text = infoInputText.getText();
         if( text == null || text.trim().equals("")){
             return;
         }
+        //set the input empty again.
         infoInputText.setText("");
         addMsg(text, true);
         addMsg(text, false);
     }
 
+    //generate new chat boxes according to the pages' FXML property and judge whether the message is from users or not
     private void addMsg(String msg, boolean judgeUser){
+       //set the property with the pages' FXML property. All the data are from set property.
        AnchorPane pane = new AnchorPane();
        pane.setPrefSize(683.0, 472.0);
        ImageView myImage = new ImageView();
@@ -66,6 +75,7 @@ public class recommendGPTController {
 
     }
 
+    //switch to commonUser interfaces.
     public void switchToMain (ActionEvent register) throws IOException {
         root = FXMLLoader.load(getClass().getResource("newCommonUser.fxml"));
         stage = (Stage) ((Node) register.getSource()).getScene().getWindow();

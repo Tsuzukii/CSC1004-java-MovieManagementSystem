@@ -29,7 +29,7 @@ public class tableMovieViewController implements Initializable {
     private PreparedStatement myPrepared;
     String mysqlurl = "jdbc:mysql://localhost:3306/MovieManagementSystem";
     Connection myConnection = DriverManager.getConnection(mysqlurl, "root", "18721376230");
-    private ResultSet resultSet;
+    ResultSet resultSet;
 
     @FXML
     private TableColumn<movies, String> colMovieN;
@@ -57,12 +57,12 @@ public class tableMovieViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String sql = "SELECT * FROM `The Shawshank Redemption`";
-        String sql2 = "SELECT * FROM `Leon`";
+        //String sql2 = "SELECT * FROM `Leon`";
         //String sql3 = "SELECT * FROM `Brokeback Mountain`";
-        String sql4 = "SELECT * FROM `Forrest Gump`";
+        //String sql4 = "SELECT * FROM `Forrest Gump`";
         try {
             activateTable(sql);
-            activateTable(sql2);
+            //activateTable(sql2);
             //activateTable(sql3);
             //activateTable(sql4);
         } catch (SQLException e) {

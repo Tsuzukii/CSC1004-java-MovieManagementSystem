@@ -5,12 +5,12 @@
 2. Register function: New users can register through register page. All the new users' data will be stored in the database.
 3. GUI for movies and information: In the main page of users' interface, you can see some classic movies with carousel controllers. Also, in another subpages, you can see some basic movies and their information I chose to store in the system. They're also presented with carousel assemblies. 
 4. Comment and Rate: In the Comment page, Users can choose their rate on certain movies and comment on movies. Similarly, All the users' comments and rates will be stored in the database.
-5. Recommendation: This part just includes a demo interface of recommending. Duet to the situation that realtime responses require much JSON knowledge and stable api, which is completely out of my current ability. Here the chatting part will only show the same information with the users' input.
+5. Recommendation: This part just includes a demo interface of recommending. Due to the situation that realtime responses require much JSON knowledge and stable api, which is completely out of my current ability. Here the chatting part will only show the same information with the users' input.
 6. Animation: I include some fancy animations with some carousels, such as carousels, titles and buttons. Though some of them are from outside packages, they also take some work to initialize and implement them into my own project.
 7. Relatively complete interfaces: I include relatively complete interfaces, like loginerror and registererror pages.
 8. Exit: Through exit, you can turn back to login to other users, which will reinitialize users.
 ### Current problems
-1. return Test的string修改无效 是什么原因
+
 2. 加电影的计数器如何实现可以不加重复的？
 3. TableView的内容被覆盖了
 ## To be done

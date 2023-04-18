@@ -94,7 +94,7 @@ public class movieCommentController implements Initializable {
                 String sql = "insert into `The Shawshank Redemption`(username, comments, age, rating) " +
                         "values(?, ?, ?, ?)";
                 String returnTest = "null";
-                tmp.updateDBWithStatement(sql, shawshankMovieInfo, returnTest);
+                returnTest = tmp.updateDBWithStatement(sql, shawshankMovieInfo, returnTest);
                 if (returnTest.equals("success")){
                     System.out.println("register success");
                 }
@@ -105,7 +105,7 @@ public class movieCommentController implements Initializable {
                 String sqlForrest = "insert into `Forrest Gump`(username, comments, age, rating) " +
                         "values(?, ?, ?, ?)";
                 String returnTestForrest = "null";
-                tmp.updateDBWithStatement(sqlForrest, ForrestMovieInfo, returnTestForrest);
+                returnTestForrest = tmp.updateDBWithStatement(sqlForrest, ForrestMovieInfo, returnTestForrest);
                 if (returnTestForrest.equals("success")){
                     System.out.println("register success");
                 }
@@ -116,7 +116,7 @@ public class movieCommentController implements Initializable {
                 String sqlBrokeback = "insert into `Brokeback Mountain`(username, comments, age, rating) " +
                         "values(?, ?, ?, ?)";
                 String returnTestBrokeback = "null";
-                tmp.updateDBWithStatement(sqlBrokeback, BrokebackMovieInfo, returnTestBrokeback);
+                returnTestBrokeback = tmp.updateDBWithStatement(sqlBrokeback, BrokebackMovieInfo, returnTestBrokeback);
                 if (returnTestBrokeback.equals("success")){
                     System.out.println("register success");
                 }
@@ -126,7 +126,7 @@ public class movieCommentController implements Initializable {
                 String sqlLeon = "insert into `Leon`(username, comments, age, rating) " +
                         "values(?, ?, ?, ?)";
                 String returnTestLeon = "null";
-                tmp.updateDBWithStatement(sqlLeon, LeonMovieInfo, returnTestLeon);
+                returnTestLeon = tmp.updateDBWithStatement(sqlLeon, LeonMovieInfo, returnTestLeon);
                 if (returnTestLeon.equals("success")){
                     System.out.println("register success");
                 }
@@ -136,8 +136,28 @@ public class movieCommentController implements Initializable {
                 String sqladd1 = "insert into `addedmovie1`(username, comments, age, rating) " +
                         "values(?, ?, ?, ?)";
                 String returnTestadd1 = "null";
-                tmp.updateDBWithStatement(sqladd1, addMovieInfo1, returnTestadd1);
+                returnTestadd1 = tmp.updateDBWithStatement(sqladd1, addMovieInfo1, returnTestadd1);
                 if (returnTestadd1.equals("success")){
+                    System.out.println("register success");
+                }
+            case "addedmovie2":
+                List<Object> addMovieInfo2 = new ArrayList<>();
+                initializeCommentInfo(addMovieInfo2);
+                String sqladd2 = "insert into `addedmovie1`(username, comments, age, rating) " +
+                        "values(?, ?, ?, ?)";
+                String returnTestadd2 = "null";
+                returnTestadd2 = tmp.updateDBWithStatement(sqladd2, addMovieInfo2, returnTestadd2);
+                if (returnTestadd2.equals("success")){
+                    System.out.println("register success");
+                }
+            case "addedmovie3":
+                List<Object> addMovieInfo3 = new ArrayList<>();
+                initializeCommentInfo(addMovieInfo3);
+                String sqladd3 = "insert into `addedmovie1`(username, comments, age, rating) " +
+                        "values(?, ?, ?, ?)";
+                String returnTestadd3 = "null";
+                returnTestadd3 = tmp.updateDBWithStatement(sqladd3, addMovieInfo3, returnTestadd3);
+                if (returnTestadd3.equals("success")){
                     System.out.println("register success");
                 }
         }
@@ -173,7 +193,6 @@ public class movieCommentController implements Initializable {
         for (int i = 0; i < count; i++){
             movieChoiceBox.getItems().add(strings.get(i).toString());
         }
-
         movieChoiceBox.setOnAction(this::getMovieName);
         ratingChoiceBox.getItems().addAll(ratingScore);
         System.out.println("123");

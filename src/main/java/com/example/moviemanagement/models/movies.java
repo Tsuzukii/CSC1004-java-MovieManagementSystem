@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+//save the movies' information as Property to show them in the tableView
 public class movies {
     private IntegerProperty id;
     private StringProperty username;

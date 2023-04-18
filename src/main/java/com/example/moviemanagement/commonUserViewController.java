@@ -46,12 +46,14 @@ public class commonUserViewController {
     private RXCarousel infoCarousel;
 
 
+    //initialize the Carousel
     @FXML
     void initialize() {
         homeCarouselInitialize();
         movieInfoCarousel();
     }
 
+    //initialize the Carousel part of mainpage. The grammar of this part used the demo of RXControls for reference.
     private void homeCarouselInitialize() {
         String[] classicMovie = {"The Shawshank Redemption","Forrest Gump","Leon"};
         ArrayList<RXCarouselPane> myMovies = new ArrayList<>();
@@ -66,19 +68,6 @@ public class commonUserViewController {
             movieLabel.setTranslateY(215);
             Duration T = new Duration(1100);
             movieCarousel.animationTimeProperty().set(T);
-            /*
-            TranslateTransition myOpened = new TranslateTransition(Duration.millis(0), movieLabel);
-            myMoviePane.setOnOpened(event -> {
-                myOpened.play();
-                event.consume();
-            });
-            TranslateTransition myClosing = new TranslateTransition(Duration.millis(0), movieLabel);
-            myMoviePane.setOnClosing(event -> {
-                myClosing.play();
-                event.consume();
-            });
-
-             */
             myMovies.add(myMoviePane);
         }
         movieCarousel.setPaneList(myMovies);
@@ -106,7 +95,7 @@ public class commonUserViewController {
         System.out.println("Switching to CommonUser");
     }
 
-
+    //initialize the Carousel part of both movie posters and information. The grammar of these parts used the demo of RXControls for reference.
     private void movieInfoCarousel() {
         ArrayList<RXCarouselPane> moviesPics = new ArrayList<>();
         ArrayList<RXCarouselPane> moviesInfo = new ArrayList<>();
@@ -119,9 +108,6 @@ public class commonUserViewController {
             RXCarouselPane myInfoPane = new RXCarouselPane(stackPaneInfo);
             picCarousel.setCarouselAnimation(new AnimCircle());
             infoCarousel.setCarouselAnimation(new AnimCorner());
-            //Duration T = new Duration(1100);
-            //picCarousel.animationTimeProperty().set(T);
-            //infoCarousel.animationTimeProperty().set(T);
             moviesPics.add(myMoviePane);
             moviesInfo.add(myInfoPane);
         }
@@ -133,6 +119,7 @@ public class commonUserViewController {
 
     }
 
+    //onAction. When clicking buttons, the scene would be loaded to recommendView.
     public void switchToGPT (ActionEvent register) throws IOException {
         root = FXMLLoader.load(getClass().getResource("recommendGPT.fxml"));
         stage = (Stage) ((Node) register.getSource()).getScene().getWindow();

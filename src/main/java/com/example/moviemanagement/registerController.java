@@ -67,6 +67,7 @@ public class registerController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setTitle("MovieManagementSystem");
         System.out.println("Switching to Login");
     }
 
@@ -110,7 +111,7 @@ public class registerController implements Initializable {
             errorinfo = "input information is null";
         }
 
-        //If errorInfo is null, the function would add new users to the database. Either too complex information or repetition would lead to error page
+        //If errorInfo is null, the function would add new users to the database calling the function. Either too complex information or repetition would lead to error page
         switch (errorinfo)
         {
             case "null" :
@@ -125,10 +126,11 @@ public class registerController implements Initializable {
                 String sql = "insert into `user`(username, password, address, age, gender) " +
                         "values(?, ?, ?, ?, ?)";
                 String returnTest = "null";
-                tmp.updateDBWithStatement(sql, registerInfo, returnTest);
+                returnTest = tmp.updateDBWithStatement(sql, registerInfo, returnTest);
                 if (returnTest.equals("success")){
                     System.out.println("register success");
                     switchTo("registerSuccess.fxml");
+                    stage.setTitle("registerSuccess");
                 }
                 System.out.println(returnTest);
                 break;

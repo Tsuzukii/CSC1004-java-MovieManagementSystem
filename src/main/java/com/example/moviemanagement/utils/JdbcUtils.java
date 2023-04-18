@@ -32,11 +32,8 @@ public class JdbcUtils {
 
     private PreparedStatement myPreparedState;
 
-    /*update database with modified statement
-        including
-     */
+    //update database with modified statement, including Arraylist, statement and return check.
     public String updateDBWithStatement(String sql, List<Object> params, String re) throws SQLException {
-        String result = "error";
         myPreparedState = myConnection.prepareStatement(sql);
         boolean paramsResult = false;
 
@@ -57,7 +54,6 @@ public class JdbcUtils {
         resultNumber = myPreparedState.executeUpdate();
         System.out.println(resultNumber);
         if (resultNumber != -1){
-            result = "success";
             re = "success";
         }
         return re;
