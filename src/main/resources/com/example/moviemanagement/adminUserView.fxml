@@ -16,7 +16,7 @@
             <Font size="26.0" />
          </font>
       </RXLineButton>
-      <RXFillButton layoutX="-6.0" layoutY="125.0" prefHeight="323.0" prefWidth="225.0" text="Charts">
+      <RXFillButton layoutX="-6.0" layoutY="125.0" onAction="#switchToAdminPlots" prefHeight="323.0" prefWidth="225.0" text="Charts">
          <font>
             <Font size="54.0" />
          </font></RXFillButton>

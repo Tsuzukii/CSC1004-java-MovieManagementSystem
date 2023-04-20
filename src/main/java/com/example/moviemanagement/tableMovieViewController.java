@@ -50,27 +50,33 @@ public class tableMovieViewController implements Initializable {
     private TableView<movies> rateTable;
 
     private ObservableList<movies> movieList;
+    private ObservableList<movies> movieListShaw;
+
+    private ObservableList<movies> movieListLeo;
 
     public tableMovieViewController() throws SQLException {
     }
-
+    //用for循环counter计数但是试图把所有的电影数据都加到fxcollection然后再加入表格不行 可能是我实现方式的问题
+    //把setItems加到initialize方法里面还是不行
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String sql = "SELECT * FROM `The Shawshank Redemption`";
-        //String sql2 = "SELECT * FROM `Leon`";
-        //String sql3 = "SELECT * FROM `Brokeback Mountain`";
-        //String sql4 = "SELECT * FROM `Forrest Gump`";
+        String sql2 = "SELECT * FROM `Leon`";
+        String sql3 = "SELECT * FROM `Brokeback Mountain`";
+        String sql4 = "SELECT * FROM `Forrest Gump`";
         try {
-            activateTable(sql);
-            //activateTable(sql2);
-            //activateTable(sql3);
-            //activateTable(sql4);
+            //movieListShaw = FXCollections.observableArrayList();
+            movieListLeo = FXCollections.observableArrayList();
+            activateTable(sql, movieListLeo);
+            activateTable(sql2, movieListLeo);
+            activateTable(sql3, movieListLeo);
+            activateTable(sql4, movieListLeo);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void activateTable(String sql) throws SQLException {
+    private void activateTable(String sql, ObservableList<movies> movieList) throws SQLException {
         //connect with DB driver
         try {
             JdbcUtils tmp = new JdbcUtils();
@@ -83,7 +89,16 @@ public class tableMovieViewController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        movieList = FXCollections.observableArrayList();
+        Statement statement = null;
+        String sqlMovie = "select * from `movieName` ";
+        statement = (Statement) myConnection.createStatement();
+        resultSet = statement.executeQuery(sqlMovie);
+        int counter = 0;
+        while (resultSet.next()) {
+            counter ++;
+        }
+        System.out.println(sql);
+//        movieList = FXCollections.observableArrayList();
         resultSet = myConnection.createStatement().executeQuery(sql);
         ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
         String tableName = resultSetMetaData.getTableName(1);

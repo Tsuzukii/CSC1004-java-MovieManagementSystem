@@ -92,5 +92,15 @@ public class adminUserViewController {
         System.out.println("Switching to Table");
     }
 
+    public void switchToAdminPlots (ActionEvent register) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("moviePlots.fxml"));
+        stage = (Stage) ((Node) register.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.centerOnScreen();
+        System.out.println("Switching to plots");
+    }
+
 
 }

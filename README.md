@@ -10,9 +10,8 @@
 7. Relatively complete interfaces: I include relatively complete interfaces, like loginerror and registererror pages.
 8. Exit: Through exit, you can turn back to login to other users, which will reinitialize users.
 ### Current problems
-
-2. 加电影的计数器如何实现可以不加重复的？
-3. TableView的内容被覆盖了
+1. mysql查询语句的问题
+2. TableView的内容被覆盖了
 ## To be done
 1. 研究下upload图片 比如用户头像的上传 可以用组件中的avatar
 2. admin用户中的chart plots and bar plots 在数据库中的数据怎么对应 看下课件 大窗口分几个按键切换页面

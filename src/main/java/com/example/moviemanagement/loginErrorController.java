@@ -15,7 +15,7 @@ public class loginErrorController {
     private Scene scene;
     private Parent root;
     @FXML
-    private JFXButton loginErrorReturn;
+    private JFXButton loginErrorRetu1rn;
 
     //onAction. When clicking buttons, the scene would be loaded to loginView
     public void switchToLogin(ActionEvent register) throws IOException {

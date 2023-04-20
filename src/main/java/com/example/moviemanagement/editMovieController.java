@@ -112,7 +112,8 @@ public class editMovieController implements Initializable {
     }
 
     /*
-
+     get the added movie names from the text-field and add these name to the movie names arraylist. Then get the last movie
+     name from the arraylist and assign them into the specific names so that users can comment
      */
     static int count = 0;
     public void addMovie() throws SQLException, IOException {
