@@ -5,21 +5,30 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
-
+<?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moviemanagement.moviePlotsController">
    <children>
-      <TabPane prefHeight="512.0" prefWidth="790.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="619.0" prefWidth="822.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <Tab text="Home">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <RXFillButton fx:id="plotsReturn" layoutX="324.0" layoutY="346.0" onAction="#switchToAdminUser" text="Return" />
+                        <RXFillButton fx:id="plotsReturn" layoutX="334.0" layoutY="396.0" onAction="#switchToAdminUser" text="Return">
+                           <font>
+                              <Font size="27.0" />
+                           </font></RXFillButton>
+                        <Label alignment="CENTER" layoutX="-5.0" layoutY="65.0" prefHeight="235.0" prefWidth="826.0" text="Welcome to the  Plots center!&#10;Here you can see the plots on movies!">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
               </content>
@@ -34,7 +43,7 @@
                               <content>
                                 <AnchorPane fx:id="main_form" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <BarChart fx:id="barChartShawshank" layoutX="29.0" layoutY="22.0" prefHeight="462.0" prefWidth="765.0" title="Age Distribution Chart for The Shawshank Redemption">
+                                          <BarChart fx:id="barChartShawshank" layoutX="58.0" layoutY="19.0" prefHeight="465.0" prefWidth="718.0" title="Age Distribution Chart for The Shawshank Redemption">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -42,15 +51,61 @@
                                               <NumberAxis side="LEFT" />
                                             </yAxis>
                                           </BarChart>
+                                          <Label layoutX="71.0" layoutY="25.0" prefHeight="25.0" prefWidth="67.0" text="People" />
                                        </children>
                                     </AnchorPane>
                               </content>
                             </Tab>
-                            <Tab text="Untitled Tab 2">
+                            <Tab text="Forrest Gump">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <BarChart fx:id="barChartForrest" layoutX="51.0" layoutY="24.0" prefHeight="455.0" prefWidth="733.0" title="Age Distribution Chart for Forrest Gump ">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                          <Label layoutX="72.0" layoutY="24.0" prefHeight="25.0" prefWidth="67.0" text="People" />
+                                       </children></AnchorPane>
                               </content>
                             </Tab>
+                              <Tab text="Leon">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <BarChart fx:id="barChartLeon" layoutX="60.0" layoutY="26.0" prefHeight="452.0" prefWidth="714.0" title="Age Distribution Chart for Leon">
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
+                                          </BarChart>
+                                          <Label layoutX="70.0" layoutY="26.0" prefHeight="25.0" prefWidth="67.0" text="People" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Brokeback Mountain">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <BarChart fx:id="barChartBrokeback" layoutX="60.0" layoutY="26.0" prefHeight="452.0" prefWidth="714.0" title="Age Distribution Chart for Brokeback Mountain">
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
+                                          </BarChart>
+                                          <Label layoutX="76.0" layoutY="26.0" prefHeight="23.0" prefWidth="67.0" text="People" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
                           </tabs>
                         </TabPane>
                      </children>
@@ -61,7 +116,16 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <PieChart fx:id="pieChartShawshank" layoutX="58.0" layoutY="47.0" prefHeight="285.0" prefWidth="307.0" />
+                        <PieChart fx:id="pieChartShawshank" layoutX="38.0" layoutY="8.0" prefHeight="247.0" prefWidth="285.0" />
+                        <PieChart fx:id="pieChartShawshank1" layoutX="431.0" layoutY="23.0" prefHeight="264.0" prefWidth="286.0" />
+                        <Label layoutX="85.0" layoutY="255.0" prefHeight="17.0" prefWidth="184.0" text="The Shawshank Redemption" />
+                        <PieChart fx:id="pieChartShawshank2" layoutX="441.0" layoutY="7.0" prefHeight="240.0" prefWidth="270.0" />
+                        <PieChart fx:id="pieChartBrokeback" layoutX="34.0" layoutY="271.0" prefHeight="247.0" prefWidth="285.0" />
+                        <Label alignment="CENTER" layoutX="513.0" layoutY="262.0" prefHeight="17.0" prefWidth="184.0" text="Leon" />
+                        <PieChart fx:id="pieChartLeon" layoutX="459.0" layoutY="11.0" prefHeight="237.0" prefWidth="286.0" />
+                        <PieChart fx:id="pieChartForrest" layoutX="468.0" layoutY="268.0" prefHeight="247.0" prefWidth="286.0" />
+                        <Label alignment="CENTER" layoutX="78.0" layoutY="521.0" prefHeight="17.0" prefWidth="184.0" text="Brokeback Mountain" />
+                        <Label alignment="CENTER" layoutX="518.0" layoutY="519.0" prefHeight="17.0" prefWidth="184.0" text="Forrest Gump" />
                      </children>
                   </AnchorPane>
             </content>
