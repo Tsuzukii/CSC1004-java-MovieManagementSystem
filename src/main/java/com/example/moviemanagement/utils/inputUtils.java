@@ -36,7 +36,10 @@ public class inputUtils {
         System.out.println("Switching to Register");
     }
 
-    //check whether the user has already existed in the database while registering,
+    /*check whether the user has already existed in the database while registering.
+    :params info: users information
+     */
+
     public void registerationRepititionCheck(String username, String pwd, String address, String age, String gender, String errorinfo) throws SQLException, IOException {
         try {
             JdbcUtils tmp = new JdbcUtils();

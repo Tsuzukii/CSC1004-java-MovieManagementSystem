@@ -45,7 +45,10 @@ public class recommendGPTController {
         addMsg(text, false);
     }
 
-    //generate new chat boxes according to the pages' FXML property and judge whether the message is from users or not
+    /*generate new chat boxes according to the pages' FXML property and judge whether the message is from users or not
+    :params msg: the message sent from user
+    :params judgeUser: judge whether it's from user or not.
+     */
     private void addMsg(String msg, boolean judgeUser){
        //set the property with the pages' FXML property. All the data are from set property.
        AnchorPane pane = new AnchorPane();

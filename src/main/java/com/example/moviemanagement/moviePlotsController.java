@@ -66,6 +66,11 @@ public class moviePlotsController implements Initializable {
         System.out.println("Switching to admin");
     }
 
+    /*
+    initialize the BarChart
+    :params barchart: selected barchart to be initialized
+    :params sql: updated sql statement
+     */
     public void setBarChart(BarChart<?, ?> barChart, String sql) throws SQLException {
         try {
             JdbcUtils tmp = new JdbcUtils();
@@ -97,6 +102,11 @@ public class moviePlotsController implements Initializable {
         barChart.getData().add(chartDataShawshank);
         }
 
+    /*
+    initialize the PieChart, constructing query form, update to the database
+    :params piechart: selected piechart to be initialized
+    :params sql: updated sql statement
+     */
     public void setPieChart(String sql, PieChart pieChart) throws SQLException {
         try {
             JdbcUtils tmp = new JdbcUtils();
@@ -137,6 +147,8 @@ public class moviePlotsController implements Initializable {
                 ));
         pieChart.getData().addAll(pieChartData);
     }
+
+    //initialize function and set the sql statement
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String sql5 ="SELECT\n" +

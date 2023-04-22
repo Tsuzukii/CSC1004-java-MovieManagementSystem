@@ -77,7 +77,9 @@ public class loginViewController {
         System.out.println("Switching to Register");
     }
 
-    //dealing with login, differentiating normal users and admins.
+    /*dealing with login, differentiating normal users and admins.
+    This part differentiate normal users and admins.
+     */
     public void tryLogin() throws Exception {
         //connect with DB driver
         try {

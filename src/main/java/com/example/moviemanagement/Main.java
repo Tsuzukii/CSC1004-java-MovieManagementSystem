@@ -13,7 +13,7 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 
 public class Main extends Application {
-    //start the main login window
+    //start the main login window through fxml file
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("loginView.fxml"));

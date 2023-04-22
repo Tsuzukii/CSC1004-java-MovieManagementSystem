@@ -61,6 +61,7 @@ public class movieCommentController implements Initializable {
         System.out.println("Switching to Login");
     }
 
+    //using the function to get current login user so that the user's information can be saved into the database
     public void initializeCommentInfo(List<Object> info){
         String commentUsn = commonUser.getName();
         int commentAge = commonUser.getAge();
@@ -71,6 +72,11 @@ public class movieCommentController implements Initializable {
         info.add(rating);
     }
 
+    /*
+    save the comment to the database with updated list information
+    :params commentMovie: the selected movie to be commented
+    switch cases to match current movies to comment
+     */
     public void commentDealing() throws SQLException {
         try {
             JdbcUtils tmp = new JdbcUtils();
@@ -143,7 +149,7 @@ public class movieCommentController implements Initializable {
             case "addedmovie2":
                 List<Object> addMovieInfo2 = new ArrayList<>();
                 initializeCommentInfo(addMovieInfo2);
-                String sqladd2 = "insert into `addedmovie1`(username, comments, age, rating) " +
+                String sqladd2 = "insert into `addedmovie2`(username, comments, age, rating) " +
                         "values(?, ?, ?, ?)";
                 String returnTestadd2 = "null";
                 returnTestadd2 = tmp.updateDBWithStatement(sqladd2, addMovieInfo2, returnTestadd2);
@@ -153,7 +159,7 @@ public class movieCommentController implements Initializable {
             case "addedmovie3":
                 List<Object> addMovieInfo3 = new ArrayList<>();
                 initializeCommentInfo(addMovieInfo3);
-                String sqladd3 = "insert into `addedmovie1`(username, comments, age, rating) " +
+                String sqladd3 = "insert into `addedmovie3`(username, comments, age, rating) " +
                         "values(?, ?, ?, ?)";
                 String returnTestadd3 = "null";
                 returnTestadd3 = tmp.updateDBWithStatement(sqladd3, addMovieInfo3, returnTestadd3);
@@ -163,11 +169,16 @@ public class movieCommentController implements Initializable {
         }
 
     }
+
+    /*
+    set the movieLabel to be current selected movie
+     */
     public void getMovieName(ActionEvent event){
         String myMovie = movieChoiceBox.getValue();
         movieLabel.setText(myMovie);
     }
 
+    //initialize the current movielist and label
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         adminUserViewController adminUserViewController = null;
@@ -186,6 +197,7 @@ public class movieCommentController implements Initializable {
         for (int i = 0; i < movie.size(); i++){
             myMovie.add(movie.get(i));
         }
+
         List<String> strings = myMovie.stream()
                 .map(object -> Objects.toString(object, null))
                 .toList();

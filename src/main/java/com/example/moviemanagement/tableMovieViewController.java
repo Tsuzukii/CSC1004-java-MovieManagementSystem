@@ -56,8 +56,8 @@ public class tableMovieViewController implements Initializable {
 
     public tableMovieViewController() throws SQLException {
     }
-    //用for循环counter计数但是试图把所有的电影数据都加到fxcollection然后再加入表格不行 可能是我实现方式的问题
-    //把setItems加到initialize方法里面还是不行
+
+    //formally initialize the tableview
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String sql = "SELECT * FROM `The Shawshank Redemption`";
@@ -76,6 +76,11 @@ public class tableMovieViewController implements Initializable {
         }
     }
 
+    /*
+    activate the Table on rates, get information from the database, add them to setCellValueFactory
+    :params sql: sql statement
+    :params movieList: ObservableList to store information that gets from the database.
+     */
     private void activateTable(String sql, ObservableList<movies> movieList) throws SQLException {
         //connect with DB driver
         try {
@@ -98,7 +103,6 @@ public class tableMovieViewController implements Initializable {
             counter ++;
         }
         System.out.println(sql);
-//        movieList = FXCollections.observableArrayList();
         resultSet = myConnection.createStatement().executeQuery(sql);
         ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
         String tableName = resultSetMetaData.getTableName(1);
@@ -116,6 +120,7 @@ public class tableMovieViewController implements Initializable {
         colUsn.setCellValueFactory(new PropertyValueFactory<>("username"));
         rateTable.setItems(movieList);
     }
+
 
     public void switchToAdmin (ActionEvent register) throws IOException {
         root = FXMLLoader.load(getClass().getResource("adminUserView.fxml"));

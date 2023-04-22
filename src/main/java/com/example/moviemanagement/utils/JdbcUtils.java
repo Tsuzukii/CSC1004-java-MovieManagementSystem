@@ -32,7 +32,11 @@ public class JdbcUtils {
 
     private PreparedStatement myPreparedState;
 
-    //update database with modified statement, including Arraylist, statement and return check.
+    /*update database with modified statement,
+    :params sql: sql statement
+    :params params: list that saving needed information
+    :params re: returnstest to check whether updating is successful or not
+     */
     public String updateDBWithStatement(String sql, List<Object> params, String re) throws SQLException {
         myPreparedState = myConnection.prepareStatement(sql);
         boolean paramsResult = false;

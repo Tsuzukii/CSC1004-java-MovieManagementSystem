@@ -71,6 +71,7 @@ public class registerController implements Initializable {
         System.out.println("Switching to Login");
     }
 
+    //dealing with new user
     public void setMyRegister() throws SQLException, IOException {
         //initialize the scene
         scene = usernameFieldRegister.getScene();
@@ -162,7 +163,7 @@ public class registerController implements Initializable {
 
     }
 
-    //initialize the ChoiceBox
+    //initialize the ChoiceBox for rating
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         genderChoiceBox.getItems().addAll(gender);

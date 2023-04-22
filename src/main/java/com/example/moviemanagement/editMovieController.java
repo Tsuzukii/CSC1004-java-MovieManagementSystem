@@ -78,6 +78,8 @@ public class editMovieController implements Initializable {
     /*
     get the movie to be deleted from the choice box, and delete all the related from the database and movie lists using
     the sql statement and arraylist functions.
+    :params deleteMovie: specific movie names to be deleted.
+    :params movieEdit： edited movie names' List.
      */
     public void deleteMovie() throws SQLException, IOException {
         try {
@@ -102,18 +104,17 @@ public class editMovieController implements Initializable {
         returnTest = tmp.updateDBWithStatement(sql, waitlist, returnTest);
         if (returnTest.equals("success")){
             System.out.println("delete success");
-            //再次从数据库中读取电影名字
-            scene = successReturn.getScene();
-            switchTo("editSuccess.fxml");
+            scene = addConfirm.getScene();
+            switchTo("editMovie.fxml");
         }
-        //scene = successReturn.getScene();
-        scene = movieNameDelete.getScene();
-        switchTo("editMovie.fxml");
     }
 
     /*
      get the added movie names from the text-field and add these name to the movie names arraylist. Then get the last movie
-     name from the arraylist and assign them into the specific names so that users can comment
+     name from the arraylist and assign them into the specific names so that users can comment.
+     :params rp(): specific names of modified movie names.
+     :params sql: updated statement with sql.
+     :params currentAdd: the List to save current added movies.
      */
     static int count = 0;
     public void addMovie() throws SQLException, IOException {
@@ -131,6 +132,8 @@ public class editMovieController implements Initializable {
         String rp1 = "addedmovie1";
         String rp2 = "addedmovie2";
         String rp3 = "addedmovie3";
+        String rp4 = "addedmovie4";
+        String rp5 = "addedmovie5";
         String addedMovie = movieNameAdd.getText();
         movieEdit.add(addedMovie);
         int currentLength = movieEdit.size();
@@ -147,10 +150,11 @@ public class editMovieController implements Initializable {
             returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
             if (returnTest.equals("success")){
                 System.out.println("add success");
+                scene = addConfirm.getScene();
+                scene = addExitButton.getScene();
+                switchTo("editMovie.fxml");
             }
-            scene = addConfirm.getScene();
-            scene = addExitButton.getScene();
-            switchTo("editMovie.fxml");
+
         }
         else if(count == 1){
             JdbcUtils tmp = new JdbcUtils();
@@ -163,6 +167,9 @@ public class editMovieController implements Initializable {
             if (returnTest.equals("success")){
                 System.out.println("add success");
                 //成功页面
+                scene = addConfirm.getScene();
+                scene = addExitButton.getScene();
+                switchTo("editMovie.fxml");
             }
             System.out.println(count);
             count = count + 1;
@@ -178,13 +185,50 @@ public class editMovieController implements Initializable {
             if (returnTest.equals("success")){
                 System.out.println("add success");
                 //成功页面
-                scene = successReturn.getScene();
-                switchTo("editSuccess.fxml");
+                scene = addConfirm.getScene();
+                scene = addExitButton.getScene();
+                switchTo("editMovie.fxml");
+            }
+            count = count + 1;
+        }
+        else if(count == 3) {
+            JdbcUtils tmp = new JdbcUtils();
+            List<Object> currentAdd = new ArrayList<>();
+            movieEdit.set(currentLength - 1, rp4);
+            currentAdd.add(rp4);
+            String returnTest = "null";
+            String sql = "insert into `movieName`(movieName) " + "values(?)";
+            returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
+            if (returnTest.equals("success")){
+                System.out.println("add success");
+                scene = addConfirm.getScene();
+                scene = addExitButton.getScene();
+                switchTo("editMovie.fxml");
+            }
+            count = count + 1;
+        }
+        else if(count == 4) {
+            JdbcUtils tmp = new JdbcUtils();
+            List<Object> currentAdd = new ArrayList<>();
+            movieEdit.set(currentLength - 1, rp5);
+            currentAdd.add(rp5);
+            String returnTest = "null";
+            String sql = "insert into `movieName`(movieName) " + "values(?)";
+            returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
+            if (returnTest.equals("success")){
+                System.out.println("add success");
+                //成功页面
+                scene = addConfirm.getScene();
+                scene = addExitButton.getScene();
+                switchTo("editMovie.fxml");
             }
             count = count + 1;
         }
     }
 
+    /*
+    switch to Admin user pages.
+     */
     public void switchToAdminMain (ActionEvent register) throws IOException {
         root = FXMLLoader.load(getClass().getResource("editMovie.fxml"));
         stage = (Stage) ((Node) register.getSource()).getScene().getWindow();
@@ -195,6 +239,8 @@ public class editMovieController implements Initializable {
         System.out.println("Switching to adminMain");
     }
 
+
+    //initialize using the adminUserViewController's functions
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         adminUserViewController adminUserViewController = null;

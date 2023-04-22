@@ -11,7 +11,7 @@
  Target Server Version : 80032 (8.0.32)
  File Encoding         : 65001
 
- Date: 21/04/2023 15:38:28
+ Date: 22/04/2023 10:28:51
 */
 
 SET NAMES utf8mb4;
@@ -41,6 +41,9 @@ INSERT INTO `addedmovie1` (`username`, `comments`, `age`, `rating`) VALUES ('use
 INSERT INTO `addedmovie1` (`username`, `comments`, `age`, `rating`) VALUES ('user2', '2222', 26, '9');
 INSERT INTO `addedmovie1` (`username`, `comments`, `age`, `rating`) VALUES ('user2', '2222', 26, '9');
 INSERT INTO `addedmovie1` (`username`, `comments`, `age`, `rating`) VALUES ('user2', '2222', 26, '9');
+INSERT INTO `addedmovie1` (`username`, `comments`, `age`, `rating`) VALUES ('user1', '111', 20, '9');
+INSERT INTO `addedmovie1` (`username`, `comments`, `age`, `rating`) VALUES ('user1', '111', 20, '9');
+INSERT INTO `addedmovie1` (`username`, `comments`, `age`, `rating`) VALUES ('user1', '111', 20, '9');
 COMMIT;
 
 -- ----------------------------
@@ -54,12 +57,13 @@ CREATE TABLE `addedmovie2` (
   `age` int NOT NULL,
   `rating` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of addedmovie2
 -- ----------------------------
 BEGIN;
+INSERT INTO `addedmovie2` (`id`, `username`, `comments`, `age`, `rating`) VALUES (1, 'user1', '12345', 20, '6');
 COMMIT;
 
 -- ----------------------------
@@ -73,12 +77,14 @@ CREATE TABLE `addedmovie3` (
   `age` int NOT NULL,
   `rating` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of addedmovie3
 -- ----------------------------
 BEGIN;
+INSERT INTO `addedmovie3` (`id`, `username`, `comments`, `age`, `rating`) VALUES (1, 'user1', '123', 20, '9');
+INSERT INTO `addedmovie3` (`id`, `username`, `comments`, `age`, `rating`) VALUES (2, 'user1', '12345', 20, '6');
 COMMIT;
 
 -- ----------------------------
@@ -138,7 +144,7 @@ CREATE TABLE `Forrest Gump` (
   `age` int NOT NULL,
   `rating` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of Forrest Gump
@@ -151,6 +157,7 @@ INSERT INTO `Forrest Gump` (`id`, `username`, `comments`, `age`, `rating`) VALUE
 INSERT INTO `Forrest Gump` (`id`, `username`, `comments`, `age`, `rating`) VALUES (6, 'user5', '555555', 38, '8');
 INSERT INTO `Forrest Gump` (`id`, `username`, `comments`, `age`, `rating`) VALUES (7, 'user6', '66666', 23, '8');
 INSERT INTO `Forrest Gump` (`id`, `username`, `comments`, `age`, `rating`) VALUES (8, 'user7', '77777', 44, '10');
+INSERT INTO `Forrest Gump` (`id`, `username`, `comments`, `age`, `rating`) VALUES (11, 'user14', '123456', 20, '9');
 COMMIT;
 
 -- ----------------------------
@@ -196,7 +203,6 @@ INSERT INTO `movieName` (`movieName`) VALUES ('Forrest Gump');
 INSERT INTO `movieName` (`movieName`) VALUES ('Leon');
 INSERT INTO `movieName` (`movieName`) VALUES ('Brokeback Mountain');
 INSERT INTO `movieName` (`movieName`) VALUES ('addedmovie2');
-INSERT INTO `movieName` (`movieName`) VALUES ('addedmovie3');
 COMMIT;
 
 -- ----------------------------
@@ -210,7 +216,7 @@ CREATE TABLE `The Shawshank Redemption` (
   `age` int NOT NULL,
   `rating` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of The Shawshank Redemption
@@ -223,6 +229,9 @@ INSERT INTO `The Shawshank Redemption` (`id`, `username`, `comments`, `age`, `ra
 INSERT INTO `The Shawshank Redemption` (`id`, `username`, `comments`, `age`, `rating`) VALUES (5, 'user4', '444444', 11, '10');
 INSERT INTO `The Shawshank Redemption` (`id`, `username`, `comments`, `age`, `rating`) VALUES (7, 'user6', '66666', 23, '8');
 INSERT INTO `The Shawshank Redemption` (`id`, `username`, `comments`, `age`, `rating`) VALUES (8, 'user7', '77777', 44, '8');
+INSERT INTO `The Shawshank Redemption` (`id`, `username`, `comments`, `age`, `rating`) VALUES (9, 'user11', '12345', 35, '9');
+INSERT INTO `The Shawshank Redemption` (`id`, `username`, `comments`, `age`, `rating`) VALUES (10, 'user12', '12345', 44, '8');
+INSERT INTO `The Shawshank Redemption` (`id`, `username`, `comments`, `age`, `rating`) VALUES (11, 'user15', '12345', 28, '9');
 COMMIT;
 
 -- ----------------------------
@@ -237,7 +246,7 @@ CREATE TABLE `user` (
   `age` int NOT NULL,
   `gender` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of user
@@ -253,6 +262,10 @@ INSERT INTO `user` (`id`, `username`, `password`, `address`, `age`, `gender`) VA
 INSERT INTO `user` (`id`, `username`, `password`, `address`, `age`, `gender`) VALUES (36, 'user8', '888888', '223323', 22, 'Female');
 INSERT INTO `user` (`id`, `username`, `password`, `address`, `age`, `gender`) VALUES (37, 'YAN', '999999', 'andnd', 38, 'Male');
 INSERT INTO `user` (`id`, `username`, `password`, `address`, `age`, `gender`) VALUES (38, 'Han', '101010', 'asd', 56, 'Male');
+INSERT INTO `user` (`id`, `username`, `password`, `address`, `age`, `gender`) VALUES (39, 'user11', '123456', 'asss', 35, 'Male');
+INSERT INTO `user` (`id`, `username`, `password`, `address`, `age`, `gender`) VALUES (40, 'user12', '123', 'asd', 44, 'Male');
+INSERT INTO `user` (`id`, `username`, `password`, `address`, `age`, `gender`) VALUES (41, 'user14', '123456', 'asd', 20, 'Male');
+INSERT INTO `user` (`id`, `username`, `password`, `address`, `age`, `gender`) VALUES (42, 'user15', '123456', 'asd', 28, 'Female');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

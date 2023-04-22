@@ -53,7 +53,11 @@ public class commonUserViewController {
         movieInfoCarousel();
     }
 
-    //initialize the Carousel part of mainpage. The grammar of this part used the demo of RXControls for reference.
+    /*
+    initialize the Carousel part of mainpage. The grammar of this part used the demo of RXControls for reference.
+    Note that this part of the codes' grammar take the RXcontrols demo as reference and I have done some modifications.
+    The following part of the Initialize function is similar.
+     */
     private void homeCarouselInitialize() {
         String[] classicMovie = {"The Shawshank Redemption","Forrest Gump","Leon"};
         ArrayList<RXCarouselPane> myMovies = new ArrayList<>();
@@ -95,7 +99,10 @@ public class commonUserViewController {
         System.out.println("Switching to CommonUser");
     }
 
-    //initialize the Carousel part of both movie posters and information. The grammar of these parts used the demo of RXControls for reference.
+    /*
+    initialize the Carousel part of both movie posters and information. The
+    grammar of these parts used the demo of RXControls for reference.
+     */
     private void movieInfoCarousel() {
         ArrayList<RXCarouselPane> moviesPics = new ArrayList<>();
         ArrayList<RXCarouselPane> moviesInfo = new ArrayList<>();

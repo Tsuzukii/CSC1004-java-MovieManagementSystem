@@ -32,6 +32,7 @@ public class adminUserViewController {
     /*
     add the movie from the database to the arraylist. Every time when the pages are reloaded, the function will be called
     and movie list after edited will be updated.
+    :params arrayList: read the movie names from the database and save them to initialize
      */
     public void arrayListInitialize(ArrayList<String> arrayList) throws SQLException {
         //connect with the DB
@@ -61,7 +62,9 @@ public class adminUserViewController {
 
     }
 
-    //the following functions are switch to specific scenes.
+    /*the following functions are switch to specific scenes.
+    load stages and scenes to new fxml files
+     */
     public void switchToLogin (ActionEvent register) throws IOException {
         root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
         stage = (Stage) ((Node) register.getSource()).getScene().getWindow();
