@@ -46,6 +46,8 @@ public class commonUserViewController {
     private RXCarousel infoCarousel;
 
 
+
+
     //initialize the Carousel
     @FXML
     void initialize() {

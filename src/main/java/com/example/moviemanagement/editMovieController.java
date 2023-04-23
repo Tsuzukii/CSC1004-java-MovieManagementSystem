@@ -2,6 +2,7 @@ package com.example.moviemanagement;
 
 import com.example.moviemanagement.utils.JdbcUtils;
 import com.jfoenix.controls.JFXButton;
+import com.leewyatt.rxcontrols.controls.RXFillButton;
 import com.leewyatt.rxcontrols.controls.RXTextField;
 import com.leewyatt.rxcontrols.controls.RXTranslationButton;
 import javafx.event.ActionEvent;
@@ -13,8 +14,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -44,8 +49,17 @@ public class editMovieController implements Initializable {
     private RXTranslationButton deleteConfirm;
     @FXML
     private JFXButton successReturn;
-
+    @FXML
+    private TextArea filePathTextArea;
+    @FXML
+    private RXFillButton browseFileEdit;
+    @FXML
+    private Label editPicLabel;
     public List<String> movieEdit = new ArrayList<>();
+
+    private FileChooser fileChooser;
+    private File file;
+    private FileInputStream fileInputStream;
 
     //switch to Admin user pages.
     public void switchToAdminUser (ActionEvent register) throws IOException {
@@ -115,6 +129,7 @@ public class editMovieController implements Initializable {
      :params rp(): specific names of modified movie names.
      :params sql: updated statement with sql.
      :params currentAdd: the List to save current added movies.
+     :file, fileInputStream, fileChooser: used to upload the picture to the database.
      */
     static int count = 0;
     public void addMovie() throws SQLException, IOException {
@@ -145,84 +160,150 @@ public class editMovieController implements Initializable {
             List<Object> currentAdd = new ArrayList<>();
             movieEdit.set(currentLength - 1, rp1);
             currentAdd.add(rp1);
-            String returnTest = "null";
-            String sql = "insert into `movieName`(movieName) " + "values(?)";
-            returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
-            if (returnTest.equals("success")){
-                System.out.println("add success");
-                scene = addConfirm.getScene();
-                scene = addExitButton.getScene();
-                switchTo("editMovie.fxml");
+            if(file != null){
+                fileInputStream = new FileInputStream(file);
             }
-
+            if(fileInputStream != null){
+                System.out.println("fis");
+                currentAdd.add(fileInputStream);
+                String sqlFis = "insert into `movieName`(movieName, image) " + "values(?, ?)";
+                String returnTestFis = "null";
+                returnTestFis = tmp.updateDBWithStatement(sqlFis, currentAdd, returnTestFis);
+                if (returnTestFis.equals("success")) {
+                    System.out.println("register success");
+                }
+            } else {
+                String returnTest = "null";
+                String sql = "insert into `movieName`(movieName) " + "values(?)";
+                returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
+                if (returnTest.equals("success")) {
+                    System.out.println("add success");
+                    scene = addConfirm.getScene();
+                    scene = addExitButton.getScene();
+                    switchTo("editMovie.fxml");
+                }
+            }
         }
         else if(count == 1){
             JdbcUtils tmp = new JdbcUtils();
             List<Object> currentAdd = new ArrayList<>();
             movieEdit.set(currentLength - 1, rp2);
             currentAdd.add(rp2);
-            String returnTest = "null";
-            String sql = "insert into `movieName`(movieName) " + "values(?)";
-            returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
-            if (returnTest.equals("success")){
-                System.out.println("add success");
-                //成功页面
-                scene = addConfirm.getScene();
-                scene = addExitButton.getScene();
-                switchTo("editMovie.fxml");
+            if(file != null){
+                fileInputStream = new FileInputStream(file);
             }
-            System.out.println(count);
-            count = count + 1;
+            if(fileInputStream != null){
+                System.out.println("fis");
+                currentAdd.add(fileInputStream);
+                String sqlFis = "insert into `movieName`(movieName, image) " + "values(?, ?)";
+                String returnTestFis = "null";
+                returnTestFis = tmp.updateDBWithStatement(sqlFis, currentAdd, returnTestFis);
+                if (returnTestFis.equals("success")) {
+                    System.out.println("register success");
+                }
+            } else {
+                String returnTest = "null";
+                String sql = "insert into `movieName`(movieName) " + "values(?)";
+                returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
+                if (returnTest.equals("success")) {
+                    System.out.println("add success");
+                    scene = addConfirm.getScene();
+                    scene = addExitButton.getScene();
+                    switchTo("editMovie.fxml");
+                }
+                System.out.println(count);
+                count = count + 1;
+            }
         }
         else if(count == 2) {
             JdbcUtils tmp = new JdbcUtils();
             List<Object> currentAdd = new ArrayList<>();
             movieEdit.set(currentLength - 1, rp3);
             currentAdd.add(rp3);
-            String returnTest = "null";
-            String sql = "insert into `movieName`(movieName) " + "values(?)";
-            returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
-            if (returnTest.equals("success")){
-                System.out.println("add success");
-                //成功页面
-                scene = addConfirm.getScene();
-                scene = addExitButton.getScene();
-                switchTo("editMovie.fxml");
+            if (file != null) {
+                fileInputStream = new FileInputStream(file);
             }
-            count = count + 1;
+            if (fileInputStream != null) {
+                System.out.println("fis");
+                currentAdd.add(fileInputStream);
+                String sqlFis = "insert into `movieName`(movieName, image) " + "values(?, ?)";
+                String returnTestFis = "null";
+                returnTestFis = tmp.updateDBWithStatement(sqlFis, currentAdd, returnTestFis);
+                if (returnTestFis.equals("success")) {
+                    System.out.println("register success");
+                }
+            } else {
+                String returnTest = "null";
+                String sql = "insert into `movieName`(movieName) " + "values(?)";
+                returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
+                if (returnTest.equals("success")) {
+                    System.out.println("add success");
+                    scene = addConfirm.getScene();
+                    scene = addExitButton.getScene();
+                    switchTo("editMovie.fxml");
+                }
+                count = count + 1;
+            }
         }
         else if(count == 3) {
             JdbcUtils tmp = new JdbcUtils();
             List<Object> currentAdd = new ArrayList<>();
             movieEdit.set(currentLength - 1, rp4);
             currentAdd.add(rp4);
-            String returnTest = "null";
-            String sql = "insert into `movieName`(movieName) " + "values(?)";
-            returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
-            if (returnTest.equals("success")){
-                System.out.println("add success");
-                scene = addConfirm.getScene();
-                scene = addExitButton.getScene();
-                switchTo("editMovie.fxml");
+            if (file != null) {
+                fileInputStream = new FileInputStream(file);
             }
-            count = count + 1;
+            if (fileInputStream != null) {
+                System.out.println("fis");
+                currentAdd.add(fileInputStream);
+                String sqlFis = "insert into `movieName`(movieName, image) " + "values(?, ?)";
+                String returnTestFis = "null";
+                returnTestFis = tmp.updateDBWithStatement(sqlFis, currentAdd, returnTestFis);
+                if (returnTestFis.equals("success")) {
+                    System.out.println("register success");
+                }
+            } else {
+                String returnTest = "null";
+                String sql = "insert into `movieName`(movieName) " + "values(?)";
+                returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
+                if (returnTest.equals("success")) {
+                    System.out.println("add success");
+                    scene = addConfirm.getScene();
+                    scene = addExitButton.getScene();
+                    switchTo("editMovie.fxml");
+                }
+                count = count + 1;
+            }
         }
         else if(count == 4) {
             JdbcUtils tmp = new JdbcUtils();
             List<Object> currentAdd = new ArrayList<>();
             movieEdit.set(currentLength - 1, rp5);
             currentAdd.add(rp5);
-            String returnTest = "null";
-            String sql = "insert into `movieName`(movieName) " + "values(?)";
-            returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
-            if (returnTest.equals("success")){
-                System.out.println("add success");
-                //成功页面
-                scene = addConfirm.getScene();
-                scene = addExitButton.getScene();
-                switchTo("editMovie.fxml");
+            if (file != null) {
+                fileInputStream = new FileInputStream(file);
             }
-            count = count + 1;
+            if (fileInputStream != null) {
+                System.out.println("fis");
+                currentAdd.add(fileInputStream);
+                String sqlFis = "insert into `movieName`(movieName, image) " + "values(?, ?)";
+                String returnTestFis = "null";
+                returnTestFis = tmp.updateDBWithStatement(sqlFis, currentAdd, returnTestFis);
+                if (returnTestFis.equals("success")) {
+                    System.out.println("register success");
+                }
+            } else {
+                String returnTest = "null";
+                String sql = "insert into `movieName`(movieName) " + "values(?)";
+                returnTest = tmp.updateDBWithStatement(sql, currentAdd, returnTest);
+                if (returnTest.equals("success")) {
+                    System.out.println("add success");
+                    scene = addConfirm.getScene();
+                    scene = addExitButton.getScene();
+                    switchTo("editMovie.fxml");
+                }
+                count = count + 1;
+            }
         }
     }
 
@@ -239,6 +320,20 @@ public class editMovieController implements Initializable {
         System.out.println("Switching to adminMain");
     }
 
+
+    public void ChooseFile(ActionEvent choose) throws Exception{
+        fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilterJPG =
+                new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG", "*.jpg",
+                        "*.JPEG", "*.jpeg");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG);
+        file = fileChooser.showOpenDialog(stage);
+        if (file != null){
+            System.out.println(1);
+            filePathTextArea.setText(file.getAbsolutePath());
+            editPicLabel.setText("The picture you uploaded has been recorded. Please press confirm to insert into the system.");
+        }
+    }
 
     //initialize using the adminUserViewController's functions
     @Override
